@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Clara Ortiz — Punta del Este</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background: #eee8e1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home {
+      position: relative;
+      width: min(100vw, calc(100vh * 1.7777778));
+      height: min(100vh, calc(100vw / 1.7777778));
+      overflow: hidden;
+    }
+
+    .home-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .link {
+      position: absolute;
+      z-index: 10;
+      display: block;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 4px;
+      transition:
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .menu-link {
+      border-radius: 2px;
+    }
+
+    .menu-link::after {
+      content: "";
+      position: absolute;
+      left: 15%;
+      right: 15%;
+      bottom: 3px;
+      height: 1px;
+      background: rgba(91, 65, 43, 0.9);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.25s ease;
+    }
+
+    .menu-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .menu-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .subscribe {
+      border-radius: 50px;
+    }
+
+    .subscribe:hover {
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 7px 20px rgba(74, 51, 32, 0.22),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .subscribe {
+      left: 10.55%;
+      top: 44.45%;
+      width: 14.45%;
+      height: 5.95%;
+    }
+
+    .concepto {
+      left: 69.40%;
+      top: 3.75%;
+      width: 7.45%;
+      height: 3.9%;
+    }
+
+    .estetica {
+      left: 78.25%;
+      top: 3.75%;
+      width: 7.05%;
+      height: 3.9%;
+    }
+
+    .contacto {
+      left: 87%;
+      top: 3.75%;
+      width: 7.4%;
+      height: 3.9%;
+    }
+
+    .link:focus-visible {
+      outline: 2px solid rgba(103, 74, 49, 0.8);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        overflow: auto;
+        align-items: flex-start;
+      }
+
+      .home {
+        width: 100vw;
+        height: calc(100vw / 1.7777778);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="home">
+
+    <img
+      class="home-image"
+      src="./home.jpg"
+      alt="Clara Ortiz — Punta del Este"
+    >
+
+    <a
+      class="link subscribe"
+      href="#suscribirme"
+      aria-label="Suscribirme a Clara Ortiz"
+      title="Suscribirme"
+    ></a>
+
+    <a
+      class="link menu-link concepto"
+      href="#concepto"
+      aria-label="Concepto"
+      title="Concepto"
+    ></a>
+
+    <a
+      class="link menu-link estetica"
+      href="#estetica"
+      aria-label="Estética"
+      title="Estética"
+    ></a>
+
+    <a
+      class="link menu-link contacto"
+      href="#contacto"
+      aria-label="Contacto"
+      title="Contacto"
+    ></a>
+
+  </main>
+</body>
+
+</html>
