@@ -10,16 +10,47 @@
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
-  <title>Clara Ortiz — Punta del Este</title>
+  <!-- ======================================================
+       TÍTULO DE LA PESTAÑA
+       ====================================================== -->
+
+  <title>Clara Ortiz</title>
 
 
   <!-- ======================================================
-       BANDERAS Y SELECTOR INTERNACIONAL
+       FAVICON CLARA ORTIZ
+       ====================================================== -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="./favicon.png"
+  >
+
+  <link
+    rel="shortcut icon"
+    type="image/png"
+    href="./favicon.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="./favicon.png"
+  >
+
+  <meta
+    name="theme-color"
+    content="#eee8e1"
+  >
+
+
+  <!-- ======================================================
+       TELÉFONO INTERNACIONAL
        ====================================================== -->
 
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/intl-tel-input@29.2.3/dist/css/intlTelInput.min.css"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.2/build/css/intlTelInput.css"
   >
 
 
@@ -45,12 +76,10 @@
 
 
     body {
-
       min-height: 100vh;
       min-height: 100svh;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -62,8 +91,8 @@
         "Helvetica Neue",
         Arial,
         sans-serif;
-
     }
+
 
 
     /* ======================================================
@@ -73,7 +102,6 @@
        ====================================================== */
 
     .hero {
-
       position: relative;
 
       width: min(
@@ -86,12 +114,10 @@
       flex-shrink: 0;
 
       overflow: hidden;
-
     }
 
 
     .hero-image {
-
       position: absolute;
 
       inset: 0;
@@ -108,8 +134,8 @@
       -webkit-user-drag: none;
 
       pointer-events: none;
-
     }
+
 
 
     /* ======================================================
@@ -117,7 +143,6 @@
        ====================================================== */
 
     .overlay {
-
       position: absolute;
 
       inset: 0;
@@ -128,19 +153,17 @@
       display: block;
 
       overflow: visible;
-
     }
 
 
     .hit {
-
       fill: transparent;
 
       pointer-events: all;
 
       cursor: pointer;
-
     }
+
 
 
     /* ======================================================
@@ -148,6 +171,63 @@
        ====================================================== */
 
     .menu-underline {
+      stroke: #6e5139;
+
+      stroke-width: 1.4;
+
+      vector-effect: non-scaling-stroke;
+
+      opacity: 0;
+
+      transition: opacity 0.20s ease;
+
+      pointer-events: none;
+    }
+
+
+    .menu-link:hover .menu-underline,
+    .menu-link:focus .menu-underline {
+      opacity: 1;
+    }
+
+
+
+    /* ======================================================
+       SUSCRIBIRME
+
+       Sólo se ilumina el borde del óvalo
+       ====================================================== */
+
+    .subscribe-highlight {
+      fill: none;
+
+      stroke: rgba(255, 255, 255, 0.78);
+
+      stroke-width: 1.25;
+
+      vector-effect: non-scaling-stroke;
+
+      opacity: 0;
+
+      transition: opacity 0.22s ease;
+
+      pointer-events: none;
+    }
+
+
+    .subscribe-link:hover .subscribe-highlight,
+    .subscribe-link:focus .subscribe-highlight {
+      opacity: 1;
+    }
+
+
+
+    /* ======================================================
+       ACCESIBILIDAD
+       ====================================================== */
+
+    .focus-outline {
+      fill: none;
 
       stroke: #6e5139;
 
@@ -157,96 +237,15 @@
 
       opacity: 0;
 
-      transition:
-        opacity 0.20s ease;
-
       pointer-events: none;
-
     }
 
 
-    .menu-link:hover .menu-underline,
-    .menu-link:focus .menu-underline {
-
-      opacity: 1;
-
-    }
-
-
-    /* ======================================================
-       SUSCRIBIRME
-       SOLO BORDE DEL ÓVALO
-       ====================================================== */
-
-    .subscribe-highlight {
-
-      fill: none;
-
-      stroke:
-        rgba(
-          255,
-          255,
-          255,
-          0.78
-        );
-
-      stroke-width: 1.25;
-
-      vector-effect:
-        non-scaling-stroke;
-
-      opacity: 0;
-
-      transition:
-        opacity 0.22s ease;
-
-      pointer-events: none;
-
-    }
-
-
-    .subscribe-link:hover
-    .subscribe-highlight,
-
-    .subscribe-link:focus
-    .subscribe-highlight {
-
-      opacity: 1;
-
-    }
-
-
-    /* ======================================================
-       ACCESIBILIDAD
-       ====================================================== */
-
-    .focus-outline {
-
-      fill: none;
-
-      stroke: #6e5139;
-
-      stroke-width: 1.4;
-
-      vector-effect:
-        non-scaling-stroke;
-
-      opacity: 0;
-
-      pointer-events: none;
-
-    }
-
-
-    .menu-link:focus-visible
-    .focus-outline,
-
-    .subscribe-link:focus-visible
-    .focus-outline {
-
+    .menu-link:focus-visible .focus-outline,
+    .subscribe-link:focus-visible .focus-outline {
       opacity: 0.75;
-
     }
+
 
 
     /* ======================================================
@@ -254,12 +253,7 @@
        ====================================================== */
 
     dialog {
-
-      width:
-        min(
-          92vw,
-          440px
-        );
+      width: min(92vw, 440px);
 
       border: none;
 
@@ -267,60 +261,36 @@
 
       padding: 0;
 
-      background:
-        #f2ece5;
+      background: #f2ece5;
 
-      color:
-        #624a37;
+      color: #624a37;
 
       box-shadow:
-        0 28px 80px
-        rgba(
-          52,
-          39,
-          28,
-          0.22
-        );
+        0 28px 80px rgba(52, 39, 28, 0.22);
 
       overflow: visible;
-
     }
 
 
     dialog::backdrop {
+      background: rgba(54, 42, 33, 0.28);
 
-      background:
-        rgba(
-          54,
-          42,
-          33,
-          0.28
-        );
+      backdrop-filter: blur(3px);
 
-      backdrop-filter:
-        blur(3px);
-
-      -webkit-backdrop-filter:
-        blur(3px);
-
+      -webkit-backdrop-filter: blur(3px);
     }
 
 
     .modal-content {
-
       position: relative;
 
-      padding:
-        46px
-        46px
-        40px;
+      padding: 46px 46px 40px;
 
-      background:
-        #f2ece5;
+      background: #f2ece5;
 
       border-radius: 5px;
-
     }
+
 
 
     /* ======================================================
@@ -328,7 +298,6 @@
        ====================================================== */
 
     .modal-close {
-
       position: absolute;
 
       top: 14px;
@@ -339,11 +308,9 @@
 
       border: none;
 
-      background:
-        transparent;
+      background: transparent;
 
-      color:
-        #755a45;
+      color: #755a45;
 
       font-size: 25px;
 
@@ -355,42 +322,34 @@
 
       opacity: 0.65;
 
-      transition:
-        opacity 0.2s ease;
-
+      transition: opacity 0.2s ease;
     }
 
 
     .modal-close:hover {
-
       opacity: 1;
-
     }
 
 
+
     /* ======================================================
-       IDENTIDAD DEL MODAL
+       IDENTIDAD MODAL
        ====================================================== */
 
     .modal-brand {
-
       margin-bottom: 9px;
 
       font-size: 11px;
 
       letter-spacing: 0.18em;
 
-      text-transform:
-        uppercase;
+      text-transform: uppercase;
 
-      color:
-        #927b68;
-
+      color: #927b68;
     }
 
 
     .modal-title {
-
       margin-bottom: 10px;
 
       font-family:
@@ -404,24 +363,20 @@
 
       font-weight: 400;
 
-      color:
-        #5e4634;
-
+      color: #5e4634;
     }
 
 
     .modal-intro {
-
       margin-bottom: 28px;
 
       font-size: 14px;
 
       line-height: 1.55;
 
-      color:
-        #816b59;
-
+      color: #816b59;
     }
+
 
 
     /* ======================================================
@@ -429,14 +384,11 @@
        ====================================================== */
 
     .field {
-
       margin-bottom: 19px;
-
     }
 
 
     .field label {
-
       display: block;
 
       margin-bottom: 7px;
@@ -445,71 +397,46 @@
 
       letter-spacing: 0.08em;
 
-      text-transform:
-        uppercase;
+      text-transform: uppercase;
 
-      color:
-        #765e4c;
-
+      color: #765e4c;
     }
 
 
-    /*
-      Nombre y email.
-      No afecta al input interno
-      del selector internacional.
-    */
-
     .field > input:not([type="hidden"]) {
-
       width: 100%;
 
-      padding:
-        11px
-        2px
-        10px;
+      padding: 11px 2px 10px;
 
       border: none;
 
-      border-bottom:
-        1px solid
-        #c7b8ab;
+      border-bottom: 1px solid #c7b8ab;
 
       border-radius: 0;
 
       outline: none;
 
-      background:
-        transparent;
+      background: transparent;
 
-      color:
-        #4f3c2e;
+      color: #4f3c2e;
 
       font-family: inherit;
 
       font-size: 15px;
 
-      transition:
-        border-color
-        0.2s ease;
-
+      transition: border-color 0.2s ease;
     }
 
 
     .field > input:not([type="hidden"])::placeholder {
-
-      color:
-        #b4a69a;
-
+      color: #b4a69a;
     }
 
 
     .field > input:not([type="hidden"]):focus {
-
-      border-bottom-color:
-        #71543e;
-
+      border-bottom-color: #71543e;
     }
+
 
 
     /* ======================================================
@@ -517,14 +444,11 @@
        ====================================================== */
 
     .iti {
-
       width: 100%;
-
     }
 
 
     .iti input {
-
       width: 100%;
 
       padding-top: 11px;
@@ -533,97 +457,60 @@
 
       border: none;
 
-      border-bottom:
-        1px solid
-        #c7b8ab;
+      border-bottom: 1px solid #c7b8ab;
 
       border-radius: 0;
 
       outline: none;
 
-      background:
-        transparent;
+      background: transparent;
 
-      color:
-        #4f3c2e;
+      color: #4f3c2e;
 
       font-family: inherit;
 
       font-size: 15px;
 
-      transition:
-        border-color
-        0.2s ease;
-
+      transition: border-color 0.2s ease;
     }
 
 
     .iti input:focus {
-
-      border-bottom-color:
-        #71543e;
-
+      border-bottom-color: #71543e;
     }
 
 
     .iti input::placeholder {
-
-      color:
-        #b4a69a;
-
+      color: #b4a69a;
     }
 
 
-    /*
-      Selector de bandera
-    */
-
     .iti__selected-country {
-
-      background:
-        transparent !important;
-
+      background: transparent !important;
     }
 
 
     .iti__selected-country-primary:hover {
-
-      background:
-        rgba(
-          113,
-          84,
-          62,
-          0.05
-        ) !important;
-
+      background: rgba(113, 84, 62, 0.05) !important;
     }
 
 
-    /*
-      Menú de países
-    */
+
+    /* ======================================================
+       LISTADO DE PAÍSES
+       ====================================================== */
 
     .iti__dropdown-content {
-
       z-index: 999999;
 
-      background:
-        #faf6f2;
+      background: #faf6f2;
 
-      border:
-        1px solid
-        #d9cdc2;
+      border: 1px solid #d9cdc2;
 
       border-radius: 4px;
 
       box-shadow:
-        0 14px 35px
-        rgba(
-          52,
-          39,
-          28,
-          0.18
-        );
+        0 14px 35px rgba(52, 39, 28, 0.18);
 
       font-family:
         -apple-system,
@@ -631,74 +518,48 @@
         "Helvetica Neue",
         Arial,
         sans-serif;
-
     }
 
 
     .iti__country {
-
-      color:
-        #5e4634;
-
+      color: #5e4634;
     }
 
 
     .iti__country:hover,
     .iti__country.iti__highlight {
-
-      background:
-        #eee4db;
-
+      background: #eee4db;
     }
 
-
-    /*
-      Buscador de países
-    */
 
     .iti__search-input {
-
       font-family: inherit;
 
-      color:
-        #5e4634;
+      color: #5e4634;
 
-      border-color:
-        #d7cabf;
+      border-color: #d7cabf;
 
-      background:
-        #fffaf6;
-
+      background: #fffaf6;
     }
 
 
-    /*
-      Línea divisoria después
-      de Uruguay.
 
-      Argentina y Uruguay quedan
-      visualmente como prioritarios.
-    */
+    /* Argentina + Uruguay prioritarios */
 
-    .iti__country-selector:
-    has(
+    .iti__country-selector:has(
       .iti__search-input:placeholder-shown
     )
     .iti__country[data-iso2="uy"] {
-
-      border-bottom:
-        1px solid
-        #d6c8bc;
-
+      border-bottom: 1px solid #d6c8bc;
     }
 
 
+
     /* ======================================================
-       AYUDA / ERRORES
+       AYUDA / ERROR
        ====================================================== */
 
     .contact-hint {
-
       margin-top: -7px;
 
       margin-bottom: 22px;
@@ -707,14 +568,11 @@
 
       line-height: 1.45;
 
-      color:
-        #9b897b;
-
+      color: #9b897b;
     }
 
 
     .form-error {
-
       display: none;
 
       margin-bottom: 16px;
@@ -723,10 +581,9 @@
 
       line-height: 1.45;
 
-      color:
-        #8a493f;
-
+      color: #8a493f;
     }
+
 
 
     /* ======================================================
@@ -734,26 +591,19 @@
        ====================================================== */
 
     .submit-button {
-
       width: 100%;
 
       margin-top: 5px;
 
-      padding:
-        14px
-        20px;
+      padding: 14px 20px;
 
-      border:
-        1px solid
-        #70523d;
+      border: 1px solid #70523d;
 
       border-radius: 30px;
 
-      background:
-        #70523d;
+      background: #70523d;
 
-      color:
-        #f8f3ee;
+      color: #f8f3ee;
 
       font-family: inherit;
 
@@ -761,53 +611,38 @@
 
       letter-spacing: 0.12em;
 
-      text-transform:
-        uppercase;
+      text-transform: uppercase;
 
       cursor: pointer;
 
       transition:
-
-        background
-        0.2s ease,
-
-        transform
-        0.2s ease;
-
+        background 0.2s ease,
+        transform 0.2s ease;
     }
 
 
     .submit-button:hover {
+      background: #5e4433;
 
-      background:
-        #5e4433;
-
-      transform:
-        translateY(-1px);
-
+      transform: translateY(-1px);
     }
 
 
+
     /* ======================================================
-       MENSAJE GRACIAS
+       GRACIAS
        ====================================================== */
 
     .success {
-
       display: none;
 
       text-align: center;
 
-      padding:
-        18px
-        0
-        8px;
-
+      padding: 18px 0 8px;
     }
 
 
     .success-title {
-
       margin-bottom: 12px;
 
       font-family:
@@ -819,18 +654,12 @@
 
       font-weight: 400;
 
-      color:
-        #5e4634;
-
+      color: #5e4634;
     }
 
 
     .success-text {
-
-      margin:
-        0
-        auto
-        30px;
+      margin: 0 auto 30px;
 
       max-width: 290px;
 
@@ -838,29 +667,20 @@
 
       line-height: 1.6;
 
-      color:
-        #816b59;
-
+      color: #816b59;
     }
 
 
     .success-close {
+      padding: 12px 32px;
 
-      padding:
-        12px
-        32px;
-
-      border:
-        1px solid
-        #71543e;
+      border: 1px solid #71543e;
 
       border-radius: 30px;
 
-      background:
-        transparent;
+      background: transparent;
 
-      color:
-        #71543e;
+      color: #71543e;
 
       font-family: inherit;
 
@@ -868,36 +688,26 @@
 
       letter-spacing: 0.12em;
 
-      text-transform:
-        uppercase;
+      text-transform: uppercase;
 
       cursor: pointer;
 
       transition:
-
-        background
-        0.2s ease,
-
-        color
-        0.2s ease;
-
+        background 0.2s ease,
+        color 0.2s ease;
     }
 
 
     .success-close:hover {
+      background: #71543e;
 
-      background:
-        #71543e;
-
-      color:
-        #f5eee8;
-
+      color: #f5eee8;
     }
+
 
 
     /* ======================================================
        RESPONSIVE
-       TABLET / NOTEBOOK
        ====================================================== */
 
     @media
@@ -905,26 +715,17 @@
     (max-height: 700px) {
 
       .hero {
-
         width: min(
           100vw,
-          calc(
-            100svh
-            *
-            1670
-            /
-            941
-          )
+          calc(100svh * 1670 / 941)
         );
-
       }
 
     }
 
 
-    /* ======================================================
-       CELULAR VERTICAL
-       ====================================================== */
+
+    /* CELULAR VERTICAL */
 
     @media
     (max-width: 700px)
@@ -932,64 +733,42 @@
     (orientation: portrait) {
 
       body {
+        align-items: flex-start;
 
-        align-items:
-          flex-start;
+        overflow-x: hidden;
 
-        overflow-x:
-          hidden;
-
-        overflow-y:
-          auto;
-
+        overflow-y: auto;
       }
 
 
       .hero {
-
         width: 100vw;
 
         height: auto;
 
-        aspect-ratio:
-          1670 / 941;
-
+        aspect-ratio: 1670 / 941;
       }
 
 
       dialog {
-
-        width:
-          min(
-            92vw,
-            400px
-          );
-
+        width: min(92vw, 400px);
       }
 
 
       .modal-content {
-
-        padding:
-          42px
-          28px
-          34px;
-
+        padding: 42px 28px 34px;
       }
 
 
       .modal-title {
-
         font-size: 27px;
-
       }
 
     }
 
 
-    /* ======================================================
-       CELULAR HORIZONTAL
-       ====================================================== */
+
+    /* CELULAR HORIZONTAL */
 
     @media
     (max-height: 500px)
@@ -997,38 +776,31 @@
     (orientation: landscape) {
 
       .hero {
-
         width: auto;
 
         height: 100svh;
 
-        aspect-ratio:
-          1670 / 941;
-
+        aspect-ratio: 1670 / 941;
       }
 
 
       dialog {
-
         max-height: 92svh;
-
       }
 
 
       .modal-content {
-
         max-height: 92svh;
 
         overflow-y: auto;
-
       }
 
     }
 
-
   </style>
 
 </head>
+
 
 
 <body>
@@ -1044,37 +816,19 @@
     <img
       class="hero-image"
       src="./home.jpg"
-      alt="Clara Ortiz — Punta del Este"
+      alt="Clara Ortiz"
     >
 
 
-
-    <!-- ====================================================
-         CAPA INTERACTIVA
-
-         Mismas dimensiones que home.jpg
-         ==================================================== -->
 
     <svg
-
       class="overlay"
-
-      viewBox="
-        0
-        0
-        1670
-        941
-      "
-
+      viewBox="0 0 1670 941"
       preserveAspectRatio="none"
-
       xmlns="http://www.w3.org/2000/svg"
-
-      aria-label="
-        Navegación de Clara Ortiz
-      "
-
+      aria-label="Navegación de Clara Ortiz"
     >
+
 
 
       <!-- ==================================================
@@ -1082,67 +836,40 @@
            ================================================== -->
 
       <a
-
         class="subscribe-link"
-
         id="openSubscribe"
-
         href="#"
-
         aria-label="Suscribirme"
-
       >
 
 
-        <!-- zona clickeable -->
-
         <rect
-
           class="hit"
-
           x="172"
           y="414"
-
           width="256"
           height="74"
-
           rx="37"
-
         />
 
 
-        <!--
-          Borde sutil al pasar
-          el mouse
-        -->
-
         <rect
-
           class="subscribe-highlight"
-
           x="181.5"
           y="424.5"
-
           width="237"
           height="53"
-
           rx="26.5"
-
         />
 
 
         <rect
-
           class="focus-outline"
-
           x="178"
           y="421"
-
           width="244"
           height="60"
-
           rx="30"
-
         />
 
 
@@ -1155,56 +882,38 @@
            ================================================== -->
 
       <a
-
         class="menu-link"
-
         href="#concepto"
-
         aria-label="Concepto"
-
       >
 
 
         <rect
-
           class="hit"
-
           x="1174"
           y="35"
-
           width="126"
           height="47"
-
           rx="4"
-
         />
 
 
         <line
-
           class="menu-underline"
-
           x1="1187"
           y1="68"
-
           x2="1286"
           y2="68"
-
         />
 
 
         <rect
-
           class="focus-outline"
-
           x="1180"
           y="43"
-
           width="113"
           height="26"
-
           rx="3"
-
         />
 
 
@@ -1217,56 +926,38 @@
            ================================================== -->
 
       <a
-
         class="menu-link"
-
         href="#estetica"
-
         aria-label="Estética"
-
       >
 
 
         <rect
-
           class="hit"
-
           x="1330"
           y="35"
-
           width="112"
           height="47"
-
           rx="4"
-
         />
 
 
         <line
-
           class="menu-underline"
-
           x1="1343"
           y1="68"
-
           x2="1428"
           y2="68"
-
         />
 
 
         <rect
-
           class="focus-outline"
-
           x="1336"
           y="43"
-
           width="99"
           height="26"
-
           rx="3"
-
         />
 
 
@@ -1279,56 +970,38 @@
            ================================================== -->
 
       <a
-
         class="menu-link"
-
         href="#contacto"
-
         aria-label="Contacto"
-
       >
 
 
         <rect
-
           class="hit"
-
           x="1472"
           y="35"
-
           width="126"
           height="47"
-
           rx="4"
-
         />
 
 
         <line
-
           class="menu-underline"
-
           x1="1485"
           y1="68"
-
           x2="1584"
           y2="68"
-
         />
 
 
         <rect
-
           class="focus-outline"
-
           x="1478"
           y="43"
-
           width="113"
           height="26"
-
           rx="3"
-
         />
 
 
@@ -1352,281 +1025,170 @@
     <div class="modal-content">
 
 
-      <!-- CERRAR -->
-
       <button
-
         class="modal-close"
-
         id="closeModal"
-
         type="button"
-
         aria-label="Cerrar"
-
       >
-
         ×
-
       </button>
 
 
 
-      <!-- ==================================================
-           FORMULARIO
-           ================================================== -->
+      <!-- FORMULARIO -->
 
       <div id="formView">
 
 
         <div class="modal-brand">
-
           Clara Ortiz
-
         </div>
 
 
         <h2 class="modal-title">
-
           ¿Cómo nos comunicamos contigo?
-
         </h2>
 
 
         <p class="modal-intro">
-
           Dejanos tus datos y te contamos lo que se viene.
-
         </p>
 
 
 
         <form
-
           id="subscribeForm"
-
           action="https://formsubmit.co/fabiofuentes@gmail.com"
-
           method="POST"
-
           target="hiddenFrame"
-
         >
 
 
 
-          <!-- ==============================================
-               NOMBRE
-               ============================================== -->
+          <!-- NOMBRE -->
 
           <div class="field">
-
 
             <label for="nombre">
-
               Nombre
-
             </label>
 
 
             <input
-
               id="nombre"
-
               name="Nombre"
-
               type="text"
-
               placeholder="Tu nombre"
-
               autocomplete="name"
-
               required
-
             >
-
 
           </div>
 
 
 
-          <!-- ==============================================
-               WHATSAPP
-               ============================================== -->
+          <!-- WHATSAPP -->
 
           <div class="field">
-
 
             <label for="whatsapp">
-
               WhatsApp
-
             </label>
 
 
-            <!--
-              El usuario ve este campo.
-
-              No tiene name porque el valor
-              completo se envía mediante
-              whatsappFull.
-            -->
-
             <input
-
               id="whatsapp"
-
               type="tel"
-
               autocomplete="tel"
-
             >
 
-
-            <!--
-              Este es el número internacional
-              que realmente recibirá Fabi.
-            -->
 
             <input
-
               type="hidden"
-
               id="whatsappFull"
-
               name="WhatsApp"
-
             >
-
 
           </div>
 
 
 
-          <!-- ==============================================
-               MAIL
-               ============================================== -->
+          <!-- MAIL -->
 
           <div class="field">
 
-
             <label for="email">
-
               Mail
-
             </label>
 
 
             <input
-
               id="email"
-
               name="Email"
-
               type="email"
-
               placeholder="nombre@correo.com"
-
               autocomplete="email"
-
             >
-
 
           </div>
 
 
 
           <p class="contact-hint">
-
-            Podés dejarnos tu WhatsApp,
-            tu mail o ambos.
-
+            Podés dejarnos tu WhatsApp, tu mail o ambos.
           </p>
 
 
 
           <p
-
             class="form-error"
-
             id="formError"
-
           >
-
             Necesitamos al menos un WhatsApp o un mail para poder comunicarnos contigo.
-
           </p>
 
 
 
-          <!-- ==============================================
-               ANTISPAM
-               ============================================== -->
+          <!-- ANTISPAM -->
 
           <input
-
             type="text"
-
             name="_honey"
-
             style="display:none"
-
           >
 
 
 
-          <!-- ==============================================
-               CONFIGURACIÓN DEL EMAIL
-               ============================================== -->
+          <!-- EMAIL -->
 
           <input
-
             type="hidden"
-
             name="_subject"
-
             value="Nueva suscripción desde ClaraOrtiz.com"
-
           >
 
 
           <input
-
             type="hidden"
-
             name="_template"
-
             value="table"
-
           >
 
 
           <input
-
             type="hidden"
-
             name="_captcha"
-
             value="false"
-
           >
 
 
-
-          <!-- ==============================================
-               ENVIAR
-               ============================================== -->
 
           <button
-
             class="submit-button"
-
             type="submit"
-
           >
-
             Enviar
-
           </button>
 
 
@@ -1637,53 +1199,36 @@
 
 
 
-      <!-- ==================================================
-           GRACIAS
-           ================================================== -->
+      <!-- GRACIAS -->
 
       <div
-
         class="success"
-
         id="successView"
-
       >
 
 
         <div class="modal-brand">
-
           Clara Ortiz
-
         </div>
 
 
         <h2 class="success-title">
-
           Gracias.
-
         </h2>
 
 
         <p class="success-text">
-
           Ya tenemos tus datos.
           Muy pronto vas a saber de nosotros.
-
         </p>
 
 
         <button
-
           class="success-close"
-
           id="successClose"
-
           type="button"
-
         >
-
           Cerrar
-
         </button>
 
 
@@ -1698,35 +1243,24 @@
 
 
   <!-- ======================================================
-       IFRAME INVISIBLE
-
-       El formulario se envía acá.
-       La web no cambia de página.
+       ENVÍO INVISIBLE
        ====================================================== -->
 
   <iframe
-
     name="hiddenFrame"
-
     id="hiddenFrame"
-
     style="display:none"
-
-    title="Envío de formulario"
-
+    title="Envío del formulario"
   ></iframe>
 
 
 
   <!-- ======================================================
-       SELECTOR INTERNACIONAL DE TELÉFONO
-
-       Incluye las utilidades para obtener
-       correctamente el número internacional.
+       TELÉFONO INTERNACIONAL
        ====================================================== -->
 
   <script
-    src="https://cdn.jsdelivr.net/npm/intl-tel-input@29.2.3/dist/js/intlTelInputWithUtils.min.js"
+    src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.2/build/js/intlTelInput.min.js"
   ></script>
 
 
@@ -1738,79 +1272,57 @@
   <script>
 
 
-    /* ======================================================
-       ELEMENTOS
-       ====================================================== */
-
     const openSubscribe =
-      document.getElementById(
-        "openSubscribe"
-      );
+      document.getElementById("openSubscribe");
 
 
     const modal =
-      document.getElementById(
-        "subscribeModal"
-      );
+      document.getElementById("subscribeModal");
 
 
     const closeModal =
-      document.getElementById(
-        "closeModal"
-      );
+      document.getElementById("closeModal");
 
 
     const successClose =
-      document.getElementById(
-        "successClose"
-      );
+      document.getElementById("successClose");
 
 
     const form =
-      document.getElementById(
-        "subscribeForm"
-      );
+      document.getElementById("subscribeForm");
 
 
     const formView =
-      document.getElementById(
-        "formView"
-      );
+      document.getElementById("formView");
 
 
     const successView =
-      document.getElementById(
-        "successView"
-      );
+      document.getElementById("successView");
 
 
     const formError =
-      document.getElementById(
-        "formError"
-      );
+      document.getElementById("formError");
 
 
     const whatsappInput =
-      document.getElementById(
-        "whatsapp"
-      );
+      document.getElementById("whatsapp");
 
 
     const whatsappFull =
-      document.getElementById(
-        "whatsappFull"
-      );
+      document.getElementById("whatsappFull");
 
 
     const emailInput =
-      document.getElementById(
-        "email"
-      );
+      document.getElementById("email");
 
 
 
     /* ======================================================
-       WHATSAPP INTERNACIONAL
+       SELECTOR DE PAÍSES
+
+       Argentina primera
+       Uruguay segunda
+       Luego todos los demás
        ====================================================== */
 
     const iti =
@@ -1818,66 +1330,27 @@
         whatsappInput,
         {
 
-
-          /*
-            Argentina seleccionada
-            inicialmente
-          */
-
           initialCountry: "ar",
-
-
-          /*
-            Argentina primera
-            Uruguay segunda
-
-            Después aparecen
-            TODOS los países.
-          */
 
           countryOrder: [
             "ar",
             "uy"
           ],
 
-
-          /*
-            Mostrar código
-            separado del número
-          */
-
           separateDialCode: true,
-
-
-          /*
-            Mostrar banderitas
-          */
 
           showFlags: true,
 
-
-          /*
-            Permitir búsqueda
-            de países
-          */
-
           countrySearch: true,
-
-
-          /*
-            Países en español
-          */
 
           countryNameLocale: "es",
 
+          formatAsYouType: true,
 
-          /*
-            Formatear el número
-            mientras se escribe
-          */
-
-          formatAsYouType: true
-
+          loadUtils: () =>
+            import(
+              "https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.2/build/js/utils.js"
+            )
 
         }
       );
@@ -1885,15 +1358,12 @@
 
 
     /* ======================================================
-       ABRIR SUSCRIPCIÓN
+       ABRIR
        ====================================================== */
 
     openSubscribe.addEventListener(
-
       "click",
-
       function(event) {
-
 
         event.preventDefault();
 
@@ -1913,30 +1383,18 @@
         modal.showModal();
 
 
-        /*
-          Cursor directamente
-          en el nombre
-        */
-
         setTimeout(
-
           function() {
 
             document
-              .getElementById(
-                "nombre"
-              )
+              .getElementById("nombre")
               .focus();
 
           },
-
           100
-
         );
 
-
       }
-
     );
 
 
@@ -1946,62 +1404,47 @@
        ====================================================== */
 
     closeModal.addEventListener(
-
       "click",
-
       function() {
 
         modal.close();
 
       }
-
     );
 
 
-
     successClose.addEventListener(
-
       "click",
-
       function() {
 
         modal.close();
 
       }
-
     );
 
 
 
     /* ======================================================
-       CERRAR HACIENDO CLICK FUERA
+       CLICK FUERA
        ====================================================== */
 
     modal.addEventListener(
-
       "click",
-
       function(event) {
 
-
         const rect =
-          modal
-            .getBoundingClientRect();
+          modal.getBoundingClientRect();
 
 
         const clickedOutside =
 
-          event.clientX <
-            rect.left ||
+          event.clientX < rect.left ||
 
-          event.clientX >
-            rect.right ||
+          event.clientX > rect.right ||
 
-          event.clientY <
-            rect.top ||
+          event.clientY < rect.top ||
 
-          event.clientY >
-            rect.bottom;
+          event.clientY > rect.bottom;
 
 
         if (clickedOutside) {
@@ -2010,9 +1453,7 @@
 
         }
 
-
       }
-
     );
 
 
@@ -2022,9 +1463,7 @@
        ====================================================== */
 
     form.addEventListener(
-
       "submit",
-
       function(event) {
 
 
@@ -2041,21 +1480,17 @@
 
 
 
-        /* ==================================================
-           WHATSAPP O MAIL OBLIGATORIO
-           ================================================== */
+        /* WhatsApp o mail obligatorio */
 
         if (
           !whatsapp &&
           !email
         ) {
 
-
           event.preventDefault();
 
 
           formError.textContent =
-
             "Necesitamos al menos un WhatsApp o un mail para poder comunicarnos contigo.";
 
 
@@ -2065,76 +1500,45 @@
 
           return;
 
-
         }
 
 
 
-        /* ==================================================
-           GUARDAR WHATSAPP COMPLETO
-           ================================================== */
+        /* Número internacional */
 
         if (whatsapp) {
 
-
-          /*
-            Ejemplo:
-
-            Argentina:
-            +5492262...
-
-            Uruguay:
-            +59899...
-          */
 
           whatsappFull.value =
             iti.getNumber();
 
 
-          /*
-            Por seguridad:
-            si el plugin todavía no devolvió
-            un número internacional,
-            armamos uno con el prefijo
-            seleccionado.
-          */
-
-          if (
-            !whatsappFull.value
-          ) {
+          if (!whatsappFull.value) {
 
 
             const country =
-              iti
-                .getSelectedCountryData();
+              iti.getSelectedCountryData();
 
 
             const cleanNumber =
-              whatsapp
-                .replace(
-                  /\D/g,
-                  ""
-                );
+              whatsapp.replace(
+                /\D/g,
+                ""
+              );
 
 
             whatsappFull.value =
-
               "+" +
               country.dialCode +
               cleanNumber;
 
-
           }
-
 
         }
 
         else {
 
-
-          whatsappFull.value =
-            "";
-
+          whatsappFull.value = "";
 
         }
 
@@ -2145,17 +1549,10 @@
 
 
 
-        /* ==================================================
-           RESPUESTA VISUAL INMEDIATA
-
-           El formulario sigue enviándose
-           al iframe por detrás.
-           ================================================== */
+        /* Gracias inmediato */
 
         setTimeout(
-
           function() {
-
 
             formView.style.display =
               "none";
@@ -2164,26 +1561,16 @@
             successView.style.display =
               "block";
 
-
           },
-
           70
-
         );
 
 
 
-        /* ==================================================
-           LIMPIAR CAMPOS DESPUÉS
-
-           Damos tiempo al navegador para
-           iniciar el envío antes del reset.
-           ================================================== */
+        /* Limpiar después */
 
         setTimeout(
-
           function() {
-
 
             form.reset();
 
@@ -2192,25 +1579,14 @@
               "";
 
 
-            /*
-              Vuelve Argentina
-              como país inicial
-            */
-
-            iti.setSelectedCountry(
-              "ar"
-            );
-
+            iti.setCountry("ar");
 
           },
-
           1500
-
         );
 
 
       }
-
     );
 
 
