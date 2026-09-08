@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Evita que el navegador siga mostrando una versión vieja del index -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -31,10 +30,6 @@
       overflow: hidden;
     }
 
-    /*
-      home.jpg = 1670 × 941 px.
-      Imagen y SVG comparten EXACTAMENTE el mismo sistema de coordenadas.
-    */
     .hero {
       position: relative;
       width: min(100vw, calc(100vh * 1670 / 941));
@@ -48,6 +43,7 @@
       height: 100%;
       display: block;
       object-fit: fill;
+
       user-select: none;
       -webkit-user-drag: none;
       pointer-events: none;
@@ -68,37 +64,61 @@
       cursor: pointer;
     }
 
-    /*
-      MENÚ:
-      la línea aparece exactamente debajo del texto impreso en home.jpg.
-      No hay rectángulo de fondo, así que no puede verse desplazado.
-    */
+    /* ===========================
+       RAYITA DEL MENÚ
+       =========================== */
+
     .menu-underline {
       stroke: #6e5139;
       stroke-width: 1.4;
       vector-effect: non-scaling-stroke;
+
       opacity: 0;
-      transition: opacity .18s ease;
+
+      transition: opacity 0.18s ease;
+
+      pointer-events: none;
+    }
+
+    /* ===========================
+       ILUMINACIÓN SUAVE DEL TEXTO
+       =========================== */
+
+    .menu-bright {
+      opacity: 0;
+
+      filter:
+        brightness(1.16)
+        contrast(1.04);
+
+      transition: opacity 0.18s ease;
+
       pointer-events: none;
     }
 
     .menu-link:hover .menu-underline,
-    .menu-link:focus .menu-underline {
+    .menu-link:focus .menu-underline,
+    .menu-link:hover .menu-bright,
+    .menu-link:focus .menu-bright {
       opacity: 1;
     }
 
-    /*
-      SUSCRIBIRME:
-      el realce está DENTRO del botón marrón de la propia imagen.
-      Coordenadas medidas directamente sobre home.jpg.
-    */
+    /* ===========================
+       SUSCRIBIRME
+       =========================== */
+
     .subscribe-highlight {
       fill: rgba(255, 255, 255, 0.07);
+
       stroke: rgba(255, 255, 255, 0.68);
       stroke-width: 1.4;
+
       vector-effect: non-scaling-stroke;
+
       opacity: 0;
-      transition: opacity .18s ease;
+
+      transition: opacity 0.18s ease;
+
       pointer-events: none;
     }
 
@@ -107,27 +127,38 @@
       opacity: 1;
     }
 
-    /*
-      Foco visible solamente al navegar con teclado.
-    */
+    /* ===========================
+       ACCESIBILIDAD
+       =========================== */
+
     .focus-outline {
       fill: none;
+
       stroke: #6e5139;
       stroke-width: 1.5;
+
       vector-effect: non-scaling-stroke;
+
       opacity: 0;
+
       pointer-events: none;
     }
 
     .menu-link:focus-visible .focus-outline,
     .subscribe-link:focus-visible .focus-outline {
-      opacity: .8;
+      opacity: 0.8;
     }
 
+    /* ===========================
+       CELULAR
+       =========================== */
+
     @media (max-width: 700px) {
+
       body {
         min-height: auto;
         display: block;
+
         overflow-x: hidden;
         overflow-y: auto;
       }
@@ -136,6 +167,7 @@
         width: 100vw;
       }
     }
+
   </style>
 </head>
 
@@ -143,16 +175,21 @@
 
   <main class="hero">
 
+    <!-- IMAGEN PRINCIPAL -->
+
     <img
       class="hero-image"
-      src="./home.jpg?v=4"
+      src="./home.jpg?v=5"
       alt="Clara Ortiz — Punta del Este"
     >
 
+
     <!--
-      SVG con el mismo viewBox que la imagen real (1670 × 941).
-      Por eso los efectos no se corren al cambiar el tamaño de pantalla.
+      SVG SUPERPUESTO
+      MISMAS MEDIDAS QUE home.jpg
+      1670 × 941
     -->
+
     <svg
       class="overlay"
       viewBox="0 0 1670 941"
@@ -161,17 +198,67 @@
       aria-label="Navegación de Clara Ortiz"
     >
 
-      <!-- SUSCRIBIRME
-           Botón marrón medido: x 181–419 / y 424–478 -->
+      <!-- ===========================
+           RECORTES DE TEXTO
+           =========================== -->
+
+      <defs>
+
+        <clipPath id="clip-concepto">
+          <rect
+            x="1184"
+            y="45"
+            width="106"
+            height="22"
+            rx="2"
+          />
+        </clipPath>
+
+
+        <clipPath id="clip-estetica">
+          <rect
+            x="1340"
+            y="45"
+            width="92"
+            height="22"
+            rx="2"
+          />
+        </clipPath>
+
+
+        <clipPath id="clip-contacto">
+          <rect
+            x="1482"
+            y="45"
+            width="106"
+            height="22"
+            rx="2"
+          />
+        </clipPath>
+
+      </defs>
+
+
+      <!-- ===========================
+           SUSCRIBIRME
+           =========================== -->
+
       <a
         class="subscribe-link"
         href="#suscribirme"
         aria-label="Suscribirme"
       >
-        <!-- zona cómoda para el mouse -->
-        <rect class="hit" x="172" y="414" width="256" height="74" rx="37"/>
 
-        <!-- realce exacto dentro del botón -->
+        <rect
+          class="hit"
+          x="172"
+          y="414"
+          width="256"
+          height="74"
+          rx="37"
+        />
+
+
         <rect
           class="subscribe-highlight"
           x="181.5"
@@ -181,6 +268,7 @@
           rx="26.5"
         />
 
+
         <rect
           class="focus-outline"
           x="178"
@@ -189,17 +277,42 @@
           height="60"
           rx="30"
         />
+
       </a>
 
 
-      <!-- CONCEPTO
-           Texto real: x 1187–1286 / y 50–61 -->
+
+      <!-- ===========================
+           CONCEPTO
+           =========================== -->
+
       <a
         class="menu-link"
         href="#concepto"
         aria-label="Concepto"
       >
-        <rect class="hit" x="1174" y="35" width="126" height="47" rx="4"/>
+
+        <rect
+          class="hit"
+          x="1174"
+          y="35"
+          width="126"
+          height="47"
+          rx="4"
+        />
+
+
+        <image
+          class="menu-bright"
+          href="./home.jpg?v=5"
+          x="0"
+          y="0"
+          width="1670"
+          height="941"
+          preserveAspectRatio="none"
+          clip-path="url(#clip-concepto)"
+        />
+
 
         <line
           class="menu-underline"
@@ -209,6 +322,7 @@
           y2="68"
         />
 
+
         <rect
           class="focus-outline"
           x="1180"
@@ -217,17 +331,42 @@
           height="26"
           rx="3"
         />
+
       </a>
 
 
-      <!-- ESTÉTICA
-           Texto real: x 1343–1428 / y 50–61 -->
+
+      <!-- ===========================
+           ESTÉTICA
+           =========================== -->
+
       <a
         class="menu-link"
         href="#estetica"
         aria-label="Estética"
       >
-        <rect class="hit" x="1330" y="35" width="112" height="47" rx="4"/>
+
+        <rect
+          class="hit"
+          x="1330"
+          y="35"
+          width="112"
+          height="47"
+          rx="4"
+        />
+
+
+        <image
+          class="menu-bright"
+          href="./home.jpg?v=5"
+          x="0"
+          y="0"
+          width="1670"
+          height="941"
+          preserveAspectRatio="none"
+          clip-path="url(#clip-estetica)"
+        />
+
 
         <line
           class="menu-underline"
@@ -237,6 +376,7 @@
           y2="68"
         />
 
+
         <rect
           class="focus-outline"
           x="1336"
@@ -245,17 +385,42 @@
           height="26"
           rx="3"
         />
+
       </a>
 
 
-      <!-- CONTACTO
-           Texto real: x 1485–1584 / y 50–61 -->
+
+      <!-- ===========================
+           CONTACTO
+           =========================== -->
+
       <a
         class="menu-link"
         href="#contacto"
         aria-label="Contacto"
       >
-        <rect class="hit" x="1472" y="35" width="126" height="47" rx="4"/>
+
+        <rect
+          class="hit"
+          x="1472"
+          y="35"
+          width="126"
+          height="47"
+          rx="4"
+        />
+
+
+        <image
+          class="menu-bright"
+          href="./home.jpg?v=5"
+          x="0"
+          y="0"
+          width="1670"
+          height="941"
+          preserveAspectRatio="none"
+          clip-path="url(#clip-contacto)"
+        />
+
 
         <line
           class="menu-underline"
@@ -265,6 +430,7 @@
           y2="68"
         />
 
+
         <rect
           class="focus-outline"
           x="1478"
@@ -273,6 +439,7 @@
           height="26"
           rx="3"
         />
+
       </a>
 
     </svg>
