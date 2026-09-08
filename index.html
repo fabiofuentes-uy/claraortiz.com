@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clara Ortiz — Punta del Este</title>
 
   <style>
@@ -32,23 +26,27 @@
       justify-content: center;
     }
 
+    /*
+      IMPORTANTE:
+      home.jpg mide 1670 × 941 px.
+      La proporción de la web usa exactamente esa medida.
+    */
     .home {
       position: relative;
-      width: min(100vw, calc(100vh * 1.7777778));
-      height: min(100vh, calc(100vw / 1.7777778));
-      overflow: hidden;
+      width: min(100vw, calc(100vh * 1.774707758));
+      height: min(100vh, calc(100vw / 1.774707758));
+      overflow: visible;
     }
 
     .home-image {
       position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      top: 0;
-      left: 0;
       object-fit: contain;
       display: block;
-      user-select: none;
       pointer-events: none;
+      user-select: none;
       -webkit-user-drag: none;
     }
 
@@ -58,80 +56,83 @@
       display: block;
       cursor: pointer;
       text-decoration: none;
-      border-radius: 4px;
-      transition:
-        background-color 0.25s ease,
-        box-shadow 0.25s ease,
-        transform 0.25s ease;
     }
 
-    .menu-link {
-      border-radius: 2px;
-    }
-
+    /*
+      MENÚ
+      Los hotspots están ajustados al texto real de la imagen.
+      En hover NO aparece un rectángulo grande:
+      solamente una línea fina y precisa debajo.
+    */
     .menu-link::after {
       content: "";
       position: absolute;
-      left: 15%;
-      right: 15%;
-      bottom: 3px;
+      left: 0;
+      right: 0;
+      bottom: -5px;
       height: 1px;
-      background: rgba(91, 65, 43, 0.9);
+      background: rgba(92, 66, 44, 0.95);
       transform: scaleX(0);
       transform-origin: center;
-      transition: transform 0.25s ease;
-    }
-
-    .menu-link:hover {
-      background: rgba(255, 255, 255, 0.12);
+      transition: transform 0.22s ease;
     }
 
     .menu-link:hover::after {
       transform: scaleX(1);
     }
 
+    /*
+      BOTÓN SUSCRIBIRME
+      El efecto queda contenido dentro del botón original,
+      sin correrse, agrandarse ni generar sombra externa.
+    */
     .subscribe {
-      border-radius: 50px;
+      border-radius: 999px;
+      transition: box-shadow 0.22s ease, background-color 0.22s ease;
     }
 
     .subscribe:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.07);
       box-shadow:
-        0 7px 20px rgba(74, 51, 32, 0.22),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.22);
-      transform: translateY(-2px);
+        inset 0 0 0 2px rgba(255, 255, 255, 0.38),
+        inset 0 0 16px rgba(255, 255, 255, 0.08);
     }
 
+    /*
+      POSICIONES EXACTAS
+      calculadas sobre home.jpg = 1670 × 941
+    */
+
     .subscribe {
-      left: 10.55%;
-      top: 44.45%;
-      width: 14.45%;
-      height: 5.95%;
+      left: 10.7784%;
+      top: 44.9522%;
+      width: 14.3114%;
+      height: 5.8448%;
     }
 
     .concepto {
-      left: 69.40%;
-      top: 3.75%;
-      width: 7.45%;
-      height: 3.9%;
+      left: 70.8982%;
+      top: 4.9947%;
+      width: 6.2275%;
+      height: 1.9129%;
     }
 
     .estetica {
-      left: 78.25%;
-      top: 3.75%;
-      width: 7.05%;
-      height: 3.9%;
+      left: 80.2395%;
+      top: 4.9947%;
+      width: 5.3892%;
+      height: 1.9129%;
     }
 
     .contacto {
-      left: 87%;
-      top: 3.75%;
-      width: 7.4%;
-      height: 3.9%;
+      left: 88.7425%;
+      top: 4.9947%;
+      width: 6.2275%;
+      height: 1.9129%;
     }
 
     .link:focus-visible {
-      outline: 2px solid rgba(103, 74, 49, 0.8);
+      outline: 1px solid rgba(92, 66, 44, 0.85);
       outline-offset: 3px;
     }
 
@@ -143,7 +144,7 @@
 
       .home {
         width: 100vw;
-        height: calc(100vw / 1.7777778);
+        height: calc(100vw / 1.774707758);
       }
     }
   </style>
@@ -188,5 +189,4 @@
 
   </main>
 </body>
-
 </html>
