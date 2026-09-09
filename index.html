@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- TEXTO DE LA PESTAÑA -->
+  <title>Clara Ortiz</title>
+
+
+  <!-- SELECTOR INTERNACIONAL DE TELÉFONO -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css"
+  >
+
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background: #eee8e1;
+    }
+
+
+    body {
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+
+    /* ==================================================
+       HOME
+    ================================================== */
+
+    .hero {
+
+      position: fixed;
+
+      inset: 0;
+
+      width: 100vw;
+      height: 100vh;
+
+      width: 100dvw;
+      height: 100dvh;
+
+      overflow: hidden;
+
+      background: #eee8e1;
+
+    }
+
+
+    /*
+      Imagen y zonas clickeables están
+      dentro del mismo SVG.
+
+      Así todo se adapta junto.
+    */
+
+    .hero-svg {
+
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+    }
+
+
+
+    /* ==================================================
+       ZONAS CLICKEABLES
+    ================================================== */
+
+    .hit {
+
+      fill: transparent;
+
+      pointer-events: all;
+
+      cursor: pointer;
+
+    }
+
+
+
+    /* ==================================================
+       MENÚ SUPERIOR
+
+       SIN iluminación.
+       Solamente rayita inferior.
+    ================================================== */
+
+    .menu-underline {
+
+      stroke: #6e5139;
+
+      stroke-width: 1.4;
+
+      vector-effect: non-scaling-stroke;
+
+      opacity: 0;
+
+      transition: opacity .18s ease;
+
+      pointer-events: none;
+
+    }
+
+
+    .menu-link:hover .menu-underline,
+    .menu-link:focus .menu-underline {
+
+      opacity: 1;
+
+    }
+
+
+
+    /* ==================================================
+       SUSCRIBIRME
+
+       Solamente borde negro.
+       Sin iluminación interior.
+       Sin sombra.
+    ================================================== */
+
+    .subscribe-border {
+
+      fill: transparent;
+
+      stroke: rgba(0, 0, 0, .92);
+
+      stroke-width: 2.4;
+
+      vector-effect: non-scaling-stroke;
+
+      opacity: 0;
+
+      transition: opacity .18s ease;
+
+      pointer-events: none;
+
+    }
+
+
+    .subscribe-link:hover .subscribe-border,
+    .subscribe-link:focus .subscribe-border {
+
+      opacity: 1;
+
+    }
+
+
+
+    /* ==================================================
+       FOCO TECLADO
+    ================================================== */
+
+    .focus-outline {
+
+      fill: none;
+
+      stroke: #6e5139;
+
+      stroke-width: 1.5;
+
+      vector-effect: non-scaling-stroke;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+    }
+
+
+    .menu-link:focus-visible .focus-outline,
+    .subscribe-link:focus-visible .focus-outline {
+
+      opacity: .75;
+
+    }
+
+
+    a {
+
+      outline: none;
+
+      -webkit-tap-highlight-color: transparent;
+
+    }
+
+
+
+    /* ==================================================
+       MODAL SUSCRIPCIÓN
+    ================================================== */
+
+    .subscribe-dialog {
+
+      width: min(92vw, 440px);
+
+      max-height: 90vh;
+
+      margin: auto;
+
+      padding: 0;
+
+      overflow: visible;
+
+      border:
+        1px solid rgba(112, 82, 61, .20);
+
+      border-radius: 5px;
+
+      background: #f2ece5;
+
+      color: #5e4634;
+
+      box-shadow:
+        0 24px 70px rgba(54, 42, 33, .20);
+
+    }
+
+
+    .subscribe-dialog::backdrop {
+
+      background:
+        rgba(54, 42, 33, .28);
+
+      backdrop-filter: blur(3px);
+
+      -webkit-backdrop-filter: blur(3px);
+
+    }
+
+
+
+    .modal-inner {
+
+      position: relative;
+
+      padding:
+        46px
+        46px
+        42px;
+
+    }
+
+
+
+    /* ==================================================
+       CERRAR
+    ================================================== */
+
+    .modal-close {
+
+      position: absolute;
+
+      top: 15px;
+      right: 17px;
+
+      width: 32px;
+      height: 32px;
+
+      border: 0;
+
+      background: transparent;
+
+      color: #70523d;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 25px;
+
+      font-weight: 300;
+
+      line-height: 1;
+
+      cursor: pointer;
+
+      opacity: .58;
+
+      transition:
+        opacity .2s ease;
+
+    }
+
+
+    .modal-close:hover {
+
+      opacity: 1;
+
+    }
+
+
+
+    /* ==================================================
+       MARCA MODAL
+    ================================================== */
+
+    .modal-brand {
+
+      margin-bottom: 27px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 12px;
+
+      letter-spacing: .20em;
+
+      text-transform: uppercase;
+
+      color: #70523d;
+
+    }
+
+
+
+    /* ==================================================
+       TÍTULO
+    ================================================== */
+
+    .modal-title {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(30px, 4vw, 39px);
+
+      line-height: 1.04;
+
+      font-weight: 400;
+
+      letter-spacing: -.02em;
+
+      color: #5e4634;
+
+    }
+
+
+
+    .modal-description {
+
+      margin:
+        0
+        0
+        34px;
+
+      max-width: 330px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 15px;
+
+      line-height: 1.55;
+
+      color: #816b59;
+
+    }
+
+
+
+    /* ==================================================
+       CAMPOS
+    ================================================== */
+
+    .field {
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .field label {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 9px;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+      color: #765e4c;
+
+    }
+
+
+    .field input {
+
+      width: 100%;
+
+      height: 39px;
+
+      padding:
+        5px
+        0
+        9px;
+
+      border: 0;
+
+      border-bottom:
+        1px solid #c7b8ab;
+
+      border-radius: 0;
+
+      outline: none;
+
+      background: transparent;
+
+      color: #5e4634;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 16px;
+
+      transition:
+        border-color .2s ease;
+
+    }
+
+
+    .field input:focus {
+
+      border-bottom-color:
+        #70523d;
+
+    }
+
+
+
+    /* ==================================================
+       TELÉFONO + BANDERAS
+    ================================================== */
+
+    .phone-field {
+
+      overflow: visible;
+
+    }
+
+
+    .iti {
+
+      width: 100%;
+
+      display: block;
+
+    }
+
+
+    #whatsapp {
+
+      width: 100%;
+
+      background: transparent;
+
+    }
+
+
+    .iti__selected-country {
+
+      background: transparent !important;
+
+    }
+
+
+    .iti__selected-country-primary {
+
+      padding-left: 0;
+
+    }
+
+
+    .iti__selected-dial-code {
+
+      color: #765e4c;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 14px;
+
+    }
+
+
+
+    /* LISTA DE PAÍSES */
+
+    .iti__dropdown-content {
+
+      background:
+        #f5f0ea !important;
+
+      border:
+        1px solid rgba(112, 82, 61, .20) !important;
+
+      box-shadow:
+        0 14px 38px rgba(54, 42, 33, .16) !important;
+
+      color: #5e4634;
+
+    }
+
+
+    .iti__country {
+
+      color: #5e4634;
+
+    }
+
+
+    .iti__country:hover,
+    .iti__country.iti__highlight {
+
+      background:
+        rgba(112, 82, 61, .08) !important;
+
+    }
+
+
+    .iti__search-input {
+
+      background:
+        #f5f0ea !important;
+
+      color:
+        #5e4634 !important;
+
+      border:
+        0 !important;
+
+      border-bottom:
+        1px solid #c7b8ab !important;
+
+      outline:
+        none !important;
+
+    }
+
+
+
+    /* ==================================================
+       NOTA
+    ================================================== */
+
+    .contact-note {
+
+      margin:
+        -10px
+        0
+        27px;
+
+      font-size: 10px;
+
+      line-height: 1.45;
+
+      color: #927e6d;
+
+    }
+
+
+
+    /* ==================================================
+       ENVIAR
+    ================================================== */
+
+    .send-button {
+
+      display: inline-block;
+
+      margin-top: 4px;
+
+      padding:
+        8px
+        0
+        6px;
+
+      border: 0;
+
+      border-bottom:
+        1px solid #70523d;
+
+      background: transparent;
+
+      color: #70523d;
+
+      font-size: 9px;
+
+      letter-spacing: .20em;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition:
+        opacity .2s ease;
+
+    }
+
+
+    .send-button:hover {
+
+      opacity: .52;
+
+    }
+
+
+
+    /* ==================================================
+       GRACIAS
+    ================================================== */
+
+    .success {
+
+      display: none;
+
+      padding-top: 6px;
+
+    }
+
+
+    .success.visible {
+
+      display: block;
+
+    }
+
+
+    .success-title {
+
+      margin:
+        0
+        0
+        17px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 39px;
+
+      line-height: 1;
+
+      font-weight: 400;
+
+      color: #5e4634;
+
+    }
+
+
+    .success-text {
+
+      margin:
+        0
+        0
+        29px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 15px;
+
+      line-height: 1.55;
+
+      color: #816b59;
+
+    }
+
+
+    .hidden {
+
+      display: none !important;
+
+    }
+
+
+
+    iframe[name="submitFrame"] {
+
+      display: none;
+
+    }
+
+
+
+    /* ==================================================
+       CELULAR
+    ================================================== */
+
+    @media (max-width: 600px) {
+
+      .subscribe-dialog {
+
+        width:
+          calc(100vw - 28px);
+
+      }
+
+
+      .modal-inner {
+
+        padding:
+          42px
+          28px
+          35px;
+
+      }
+
+
+      .modal-title {
+
+        font-size: 32px;
+
+      }
+
+    }
+
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+  <!-- ==================================================
+       HOME
+  ================================================== -->
+
+  <main class="hero">
+
+
+    <svg
+
+      class="hero-svg"
+
+      viewBox="0 0 1670 941"
+
+      preserveAspectRatio="xMidYMid slice"
+
+      xmlns="http://www.w3.org/2000/svg"
+
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+
+      aria-label="Clara Ortiz"
+
+    >
+
+
+
+      <!-- ==================================================
+           IMAGEN
+      ================================================== -->
+
+      <image
+
+        href="./home.jpg"
+
+        xlink:href="./home.jpg"
+
+        x="0"
+        y="0"
+
+        width="1670"
+        height="941"
+
+        preserveAspectRatio="none"
+
+      />
+
+
+
+      <!-- ==================================================
+           SUSCRIBIRME
+      ================================================== -->
+
+      <a
+
+        id="openSubscribe"
+
+        class="subscribe-link"
+
+        href="#suscribirme"
+
+        xlink:href="#suscribirme"
+
+        aria-label="Suscribirme"
+
+      >
+
+
+        <rect
+
+          class="hit"
+
+          x="172"
+          y="414"
+
+          width="256"
+          height="74"
+
+          rx="37"
+
+        />
+
+
+        <rect
+
+          class="subscribe-border"
+
+          x="181.5"
+          y="424.5"
+
+          width="237"
+          height="53"
+
+          rx="26.5"
+
+        />
+
+
+        <rect
+
+          class="focus-outline"
+
+          x="178"
+          y="421"
+
+          width="244"
+          height="60"
+
+          rx="30"
+
+        />
+
+
+      </a>
+
+
+
+      <!-- ==================================================
+           CONCEPTO
+      ================================================== -->
+
+      <a
+
+        class="menu-link"
+
+        href="#concepto"
+
+        xlink:href="#concepto"
+
+        aria-label="Concepto"
+
+      >
+
+
+        <rect
+
+          class="hit"
+
+          x="1174"
+          y="35"
+
+          width="126"
+          height="47"
+
+          rx="4"
+
+        />
+
+
+        <line
+
+          class="menu-underline"
+
+          x1="1187"
+          y1="88"
+
+          x2="1286"
+          y2="88"
+
+        />
+
+
+        <rect
+
+          class="focus-outline"
+
+          x="1180"
+          y="43"
+
+          width="113"
+          height="26"
+
+          rx="3"
+
+        />
+
+
+      </a>
+
+
+
+      <!-- ==================================================
+           ESTÉTICA
+      ================================================== -->
+
+      <a
+
+        class="menu-link"
+
+        href="#estetica"
+
+        xlink:href="#estetica"
+
+        aria-label="Estética"
+
+      >
+
+
+        <rect
+
+          class="hit"
+
+          x="1330"
+          y="35"
+
+          width="112"
+          height="47"
+
+          rx="4"
+
+        />
+
+
+        <line
+
+          class="menu-underline"
+
+          x1="1343"
+          y1="88"
+
+          x2="1428"
+          y2="88"
+
+        />
+
+
+        <rect
+
+          class="focus-outline"
+
+          x="1336"
+          y="43"
+
+          width="99"
+          height="26"
+
+          rx="3"
+
+        />
+
+
+      </a>
+
+
+
+      <!-- ==================================================
+           CONTACTO
+      ================================================== -->
+
+      <a
+
+        id="contactLink"
+
+        class="menu-link"
+
+        href="./contacto.html"
+
+        xlink:href="./contacto.html"
+
+        target="_self"
+
+        aria-label="Contacto"
+
+      >
+
+
+        <rect
+
+          class="hit"
+
+          x="1472"
+          y="35"
+
+          width="126"
+          height="47"
+
+          rx="4"
+
+        />
+
+
+        <line
+
+          class="menu-underline"
+
+          x1="1485"
+          y1="88"
+
+          x2="1584"
+          y2="88"
+
+        />
+
+
+        <rect
+
+          class="focus-outline"
+
+          x="1478"
+          y="43"
+
+          width="113"
+          height="26"
+
+          rx="3"
+
+        />
+
+
+      </a>
+
+
+    </svg>
+
+
+  </main>
+
+
+
+
+  <!-- ==================================================
+       MODAL SUSCRIBIRME
+  ================================================== -->
+
+  <dialog
+
+    id="subscribeDialog"
+
+    class="subscribe-dialog"
+
+  >
+
+
+    <div class="modal-inner">
+
+
+      <!-- CERRAR -->
+
+      <button
+
+        id="closeModal"
+
+        class="modal-close"
+
+        type="button"
+
+        aria-label="Cerrar"
+
+      >
+
+        ×
+
+      </button>
+
+
+
+      <!-- ==================================================
+           FORMULARIO
+      ================================================== -->
+
+      <div id="modalContent">
+
+
+        <div class="modal-brand">
+
+          Clara Ortiz
+
+        </div>
+
+
+
+        <h2 class="modal-title">
+
+          ¿Cómo nos comunicamos contigo?
+
+        </h2>
+
+
+
+        <p class="modal-description">
+
+          Dejanos tus datos y te contamos lo que se viene.
+
+        </p>
+
+
+
+        <form
+
+          id="subscribeForm"
+
+          action="https://formsubmit.co/fabiofuentes@gmail.com"
+
+          method="POST"
+
+          target="submitFrame"
+
+        >
+
+
+
+          <!-- ASUNTO -->
+
+          <input
+
+            type="hidden"
+
+            name="_subject"
+
+            value="Nueva suscripción — Clara Ortiz"
+
+          >
+
+
+
+          <!-- SIN CAPTCHA -->
+
+          <input
+
+            type="hidden"
+
+            name="_captcha"
+
+            value="false"
+
+          >
+
+
+
+          <!-- FORMATO MAIL -->
+
+          <input
+
+            type="hidden"
+
+            name="_template"
+
+            value="table"
+
+          >
+
+
+
+          <!-- WHATSAPP COMPLETO -->
+
+          <input
+
+            type="hidden"
+
+            id="whatsappFull"
+
+            name="WhatsApp"
+
+          >
+
+
+
+          <!-- ==================================================
+               NOMBRE
+          ================================================== -->
+
+          <div class="field">
+
+
+            <label for="nombre">
+
+              Nombre
+
+            </label>
+
+
+            <input
+
+              id="nombre"
+
+              name="Nombre"
+
+              type="text"
+
+              autocomplete="name"
+
+              required
+
+            >
+
+
+          </div>
+
+
+
+          <!-- ==================================================
+               WHATSAPP
+          ================================================== -->
+
+          <div class="field phone-field">
+
+
+            <label for="whatsapp">
+
+              WhatsApp
+
+            </label>
+
+
+            <input
+
+              id="whatsapp"
+
+              type="tel"
+
+              autocomplete="tel"
+
+            >
+
+
+          </div>
+
+
+
+          <!-- ==================================================
+               MAIL
+          ================================================== -->
+
+          <div class="field">
+
+
+            <label for="email">
+
+              Mail
+
+            </label>
+
+
+            <input
+
+              id="email"
+
+              name="Mail"
+
+              type="email"
+
+              autocomplete="email"
+
+            >
+
+
+          </div>
+
+
+
+          <p class="contact-note">
+
+            Dejanos al menos un WhatsApp o un mail.
+
+          </p>
+
+
+
+          <button
+
+            class="send-button"
+
+            type="submit"
+
+          >
+
+            Enviar
+
+          </button>
+
+
+        </form>
+
+
+      </div>
+
+
+
+      <!-- ==================================================
+           MENSAJE GRACIAS
+      ================================================== -->
+
+      <div
+
+        id="successMessage"
+
+        class="success"
+
+      >
+
+
+        <div class="modal-brand">
+
+          Clara Ortiz
+
+        </div>
+
+
+
+        <h3 class="success-title">
+
+          Gracias.
+
+        </h3>
+
+
+
+        <p class="success-text">
+
+          Ya tenemos tus datos.
+          Muy pronto vas a saber de nosotros.
+
+        </p>
+
+
+
+        <button
+
+          id="closeSuccess"
+
+          class="send-button"
+
+          type="button"
+
+        >
+
+          Cerrar
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </dialog>
+
+
+
+
+  <!-- ==================================================
+       ENVÍO INVISIBLE
+  ================================================== -->
+
+  <iframe
+
+    name="submitFrame"
+
+    title="Envío"
+
+  ></iframe>
+
+
+
+
+  <!-- ==================================================
+       SELECTOR INTERNACIONAL
+  ================================================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"
+  ></script>
+
+
+
+  <script>
+
+
+    /* ==================================================
+       ELEMENTOS
+    ================================================== */
+
+    const dialog =
+      document.getElementById("subscribeDialog");
+
+
+    const openSubscribe =
+      document.getElementById("openSubscribe");
+
+
+    const contactLink =
+      document.getElementById("contactLink");
+
+
+    const closeModal =
+      document.getElementById("closeModal");
+
+
+    const closeSuccess =
+      document.getElementById("closeSuccess");
+
+
+    const form =
+      document.getElementById("subscribeForm");
+
+
+    const modalContent =
+      document.getElementById("modalContent");
+
+
+    const successMessage =
+      document.getElementById("successMessage");
+
+
+    const nombre =
+      document.getElementById("nombre");
+
+
+    const whatsapp =
+      document.getElementById("whatsapp");
+
+
+    const whatsappFull =
+      document.getElementById("whatsappFull");
+
+
+    const email =
+      document.getElementById("email");
+
+
+
+    /* ==================================================
+       SELECTOR DE PAÍSES
+
+       Argentina primero.
+       Uruguay segundo.
+       Después resto del mundo.
+    ================================================== */
+
+    const iti =
+      window.intlTelInput(
+
+        whatsapp,
+
+        {
+
+          initialCountry: "ar",
+
+          countryOrder: [
+            "ar",
+            "uy"
+          ],
+
+          separateDialCode: true,
+
+          loadUtils: () =>
+            import(
+              "https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js"
+            )
+
+        }
+
+      );
+
+
+
+    /* ==================================================
+       ABRIR SUSCRIPCIÓN
+    ================================================== */
+
+    function openModal() {
+
+
+      form.reset();
+
+
+      whatsappFull.value = "";
+
+
+      modalContent.classList.remove(
+        "hidden"
+      );
+
+
+      successMessage.classList.remove(
+        "visible"
+      );
+
+
+      if (!dialog.open) {
+
+        dialog.showModal();
+
+      }
+
+
+      setTimeout(
+
+        function() {
+
+          nombre.focus();
+
+        },
+
+        60
+
+      );
+
+
+    }
+
+
+
+    /* ==================================================
+       CERRAR
+    ================================================== */
+
+    function closeSubscription() {
+
+
+      if (dialog.open) {
+
+        dialog.close();
+
+      }
+
+
+    }
+
+
+
+    /* ==================================================
+       CLICK SUSCRIBIRME
+    ================================================== */
+
+    openSubscribe.addEventListener(
+
+      "click",
+
+      function(event) {
+
+
+        event.preventDefault();
+
+
+        openModal();
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       CLICK CONTACTO
+
+       Lo forzamos por JavaScript además del href.
+       Así funciona correctamente también desde SVG/Safari.
+    ================================================== */
+
+    contactLink.addEventListener(
+
+      "click",
+
+      function(event) {
+
+
+        event.preventDefault();
+
+
+        window.location.assign(
+          "./contacto.html"
+        );
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       CERRAR X
+    ================================================== */
+
+    closeModal.addEventListener(
+
+      "click",
+
+      closeSubscription
+
+    );
+
+
+
+    /* ==================================================
+       CERRAR DESPUÉS DE ENVIAR
+    ================================================== */
+
+    closeSuccess.addEventListener(
+
+      "click",
+
+      closeSubscription
+
+    );
+
+
+
+    /* ==================================================
+       CERRAR HACIENDO CLICK FUERA
+    ================================================== */
+
+    dialog.addEventListener(
+
+      "click",
+
+      function(event) {
+
+
+        const rect =
+          dialog.getBoundingClientRect();
+
+
+        const inside =
+
+          event.clientX >= rect.left &&
+
+          event.clientX <= rect.right &&
+
+          event.clientY >= rect.top &&
+
+          event.clientY <= rect.bottom;
+
+
+        if (!inside) {
+
+          closeSubscription();
+
+        }
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       VALIDACIÓN Y ENVÍO
+    ================================================== */
+
+    form.addEventListener(
+
+      "submit",
+
+      function(event) {
+
+
+        event.preventDefault();
+
+
+
+        /* Nombre obligatorio */
+
+        if (!form.checkValidity()) {
+
+
+          form.reportValidity();
+
+
+          return;
+
+
+        }
+
+
+
+        const hasWhatsapp =
+
+          whatsapp.value.trim() !== "";
+
+
+        const hasEmail =
+
+          email.value.trim() !== "";
+
+
+
+        /*
+          Debe completar WhatsApp o Mail.
+        */
+
+        if (!hasWhatsapp && !hasEmail) {
+
+
+          email.setCustomValidity(
+            "Ingresá un WhatsApp o un mail."
+          );
+
+
+          email.reportValidity();
+
+
+          return;
+
+
+        }
+
+
+
+        email.setCustomValidity("");
+
+
+
+        /* ==================================================
+           ARMAR WHATSAPP INTERNACIONAL
+        ================================================== */
+
+        if (hasWhatsapp) {
+
+
+          const internationalNumber =
+            iti.getNumber();
+
+
+          if (internationalNumber) {
+
+
+            whatsappFull.value =
+              internationalNumber;
+
+
+          }
+
+          else {
+
+
+            const country =
+              iti.getSelectedCountryData();
+
+
+            whatsappFull.value =
+
+              "+" +
+
+              country.dialCode +
+
+              " " +
+
+              whatsapp.value;
+
+
+          }
+
+
+        }
+
+
+
+        /* ==================================================
+           ENVIAR A FORMSUBMIT
+        ================================================== */
+
+        form.submit();
+
+
+
+        /* ==================================================
+           MOSTRAR GRACIAS
+        ================================================== */
+
+        modalContent.classList.add(
+          "hidden"
+        );
+
+
+        successMessage.classList.add(
+          "visible"
+        );
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       LIMPIAR ERROR AL ESCRIBIR
+    ================================================== */
+
+    whatsapp.addEventListener(
+
+      "input",
+
+      function() {
+
+        email.setCustomValidity("");
+
+      }
+
+    );
+
+
+    email.addEventListener(
+
+      "input",
+
+      function() {
+
+        email.setCustomValidity("");
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       SI VENIMOS DESDE contacto.html
+
+       index.html#suscribirme
+
+       abre automáticamente la caja.
+    ================================================== */
+
+    if (
+
+      window.location.hash ===
+      "#suscribirme"
+
+    ) {
+
+
+      window.addEventListener(
+
+        "load",
+
+        function() {
+
+
+          openModal();
+
+
+          history.replaceState(
+
+            null,
+
+            "",
+
+            window.location.pathname +
+            window.location.search
+
+          );
+
+
+        }
+
+      );
+
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
