@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -11,13 +12,19 @@
 
   <title>Clara Ortiz</title>
 
+
   <style>
+
+    /* ======================================================
+       RESET
+       ====================================================== */
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
 
     html,
     body {
@@ -26,14 +33,36 @@
       background: #d8cdc1;
     }
 
+
     body {
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+      opacity: 0;
+
+      transition:
+        opacity 0.35s ease;
     }
 
-    .contacto {
+
+    body.page-loaded {
+      opacity: 1;
+    }
+
+
+    body.page-leaving {
+      opacity: 0;
+    }
+
+
+
+    /* ======================================================
+       PÁGINA
+       contacto.jpg mantiene siempre su proporción
+       ====================================================== */
+
+    .pagina {
+      position: relative;
+
       width: 100vw;
       height: 100vh;
       height: 100svh;
@@ -41,34 +70,387 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      background: #d8cdc1;
+
+      overflow: hidden;
     }
 
-    .contacto img {
+
+
+    /* ======================================================
+       IMAGEN
+       ====================================================== */
+
+    .pagina-imagen {
+      position: absolute;
+
       width: 100%;
       height: 100%;
+
+      inset: 0;
 
       display: block;
 
       object-fit: contain;
 
       user-select: none;
+
       -webkit-user-drag: none;
+
+      pointer-events: none;
     }
 
+
+
+    /* ======================================================
+       CAPA INTERACTIVA
+       Usa las mismas coordenadas que la imagen
+       ====================================================== */
+
+    .overlay {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: 10;
+    }
+
+
+    .hotspot {
+      position: absolute;
+
+      display: block;
+
+      cursor: pointer;
+
+      text-decoration: none;
+    }
+
+
+
+    /* ======================================================
+       LOGO
+       ====================================================== */
+
+    .logo-link {
+      left: 10.8%;
+      top: 5.4%;
+
+      width: 27%;
+      height: 11%;
+    }
+
+
+
+    /* ======================================================
+       MENÚ SUPERIOR
+
+       Coordenadas aproximadas de contacto.jpg
+       ====================================================== */
+
+    .concepto-link {
+      left: 70.7%;
+      top: 3.8%;
+
+      width: 7.5%;
+      height: 5%;
+    }
+
+
+    .estetica-link {
+      left: 79.5%;
+      top: 3.8%;
+
+      width: 7.2%;
+      height: 5%;
+    }
+
+
+    .contacto-link {
+      left: 88.1%;
+      top: 3.8%;
+
+      width: 7.5%;
+      height: 5%;
+    }
+
+
+
+    /* ======================================================
+       RAYITA DE HOVER
+       ====================================================== */
+
+    .menu-link::after {
+      content: "";
+
+      position: absolute;
+
+      left: 10%;
+      right: 10%;
+
+      bottom: 6%;
+
+      height: 1px;
+
+      background: #6e5139;
+
+      transform: scaleX(0);
+
+      transform-origin: center;
+
+      transition:
+        transform 0.22s ease;
+    }
+
+
+    .menu-link:hover::after {
+      transform: scaleX(1);
+    }
+
+
+
+    /* CONTACTO YA ESTÁ ACTIVO */
+
+    .contacto-link::after {
+      transform: scaleX(1);
+    }
+
+
+
+    /* ======================================================
+       RESPONSIVE
+       ====================================================== */
+
+    @media
+    (max-width: 700px)
+    and
+    (orientation: portrait) {
+
+      body {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+
+      .pagina {
+        width: 100vw;
+
+        height: auto;
+
+        aspect-ratio: 16 / 9;
+
+        align-items: flex-start;
+      }
+
+    }
+
+
+
+    @media
+    (max-height: 500px)
+    and
+    (orientation: landscape) {
+
+      .pagina {
+        height: 100svh;
+
+        width: auto;
+
+        aspect-ratio: 16 / 9;
+      }
+
+    }
+
+
   </style>
+
 </head>
+
 
 
 <body>
 
-  <main class="contacto">
+
+  <main class="pagina">
+
+
+    <!-- ==================================================
+         IMAGEN COMPLETA
+         ================================================== -->
 
     <img
+      class="pagina-imagen"
       src="./contacto.jpg"
       alt="Clara Ortiz — Contacto"
     >
 
+
+
+    <!-- ==================================================
+         LOGO → HOME
+         ================================================== -->
+
+    <a
+      class="hotspot logo-link internal-link"
+      href="index.html"
+      aria-label="Volver al inicio"
+    ></a>
+
+
+
+    <!-- ==================================================
+         CONCEPTO
+         ================================================== -->
+
+    <a
+      class="hotspot menu-link concepto-link internal-link"
+      href="concepto.html"
+      aria-label="Concepto"
+    ></a>
+
+
+
+    <!-- ==================================================
+         ESTÉTICA
+         ================================================== -->
+
+    <a
+      class="hotspot menu-link estetica-link internal-link"
+      href="estetica.html"
+      aria-label="Estética"
+    ></a>
+
+
+
+    <!-- ==================================================
+         CONTACTO
+         ================================================== -->
+
+    <a
+      class="hotspot menu-link contacto-link"
+      href="contacto.html"
+      aria-label="Contacto"
+    ></a>
+
+
   </main>
+
+
+
+  <script>
+
+    /* ======================================================
+       APARICIÓN DE LA PÁGINA
+       ====================================================== */
+
+    window.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        requestAnimationFrame(
+          function () {
+
+            document.body.classList.add(
+              "page-loaded"
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* ======================================================
+       TRANSICIÓN HACIA OTRA PÁGINA
+       ====================================================== */
+
+    document.addEventListener(
+      "click",
+      function (event) {
+
+        const link =
+          event.target.closest(
+            "a.internal-link"
+          );
+
+
+        if (!link) {
+          return;
+        }
+
+
+        const href =
+          link.getAttribute("href");
+
+
+        if (!href) {
+          return;
+        }
+
+
+        event.preventDefault();
+
+
+        document.body.classList.remove(
+          "page-loaded"
+        );
+
+
+        document.body.classList.add(
+          "page-leaving"
+        );
+
+
+        setTimeout(
+          function () {
+
+            window.location.href =
+              href;
+
+          },
+          300
+        );
+
+      }
+    );
+
+
+
+    /* ======================================================
+       BOTÓN ATRÁS / ADELANTE DEL NAVEGADOR
+       ====================================================== */
+
+    window.addEventListener(
+      "pageshow",
+      function () {
+
+        document.body.classList.remove(
+          "page-leaving"
+        );
+
+
+        requestAnimationFrame(
+          function () {
+
+            document.body.classList.add(
+              "page-loaded"
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+  </script>
+
 
 </body>
 
