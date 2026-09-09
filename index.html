@@ -14,14 +14,14 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <!-- SOLO ESTO APARECE EN LA PESTAÑA -->
+  <!-- TEXTO DE LA PESTAÑA -->
   <title>Clara Ortiz</title>
 
 
   <!-- SELECTOR INTERNACIONAL DE TELÉFONO -->
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/intl-tel-input@29.2.3/build/css/intlTelInput.css"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css"
   >
 
 
@@ -54,7 +54,9 @@
     ================================================== */
 
     .hero {
+
       position: fixed;
+
       inset: 0;
 
       width: 100vw;
@@ -66,37 +68,59 @@
       overflow: hidden;
 
       background: #eee8e1;
+
     }
 
 
+    /*
+      Imagen y zonas clickeables están
+      dentro del mismo SVG.
+
+      Así todo se adapta junto.
+    */
+
     .hero-svg {
+
       position: absolute;
+
       inset: 0;
 
       width: 100%;
       height: 100%;
 
       display: block;
-    }
 
-
-    .hit {
-      fill: transparent;
-      pointer-events: all;
-      cursor: pointer;
     }
 
 
 
     /* ==================================================
-       MENÚ
+       ZONAS CLICKEABLES
+    ================================================== */
 
-       No se ilumina.
-       Sólo aparece la línea inferior.
+    .hit {
+
+      fill: transparent;
+
+      pointer-events: all;
+
+      cursor: pointer;
+
+    }
+
+
+
+    /* ==================================================
+       MENÚ SUPERIOR
+
+       SIN iluminación.
+       Solamente rayita inferior.
     ================================================== */
 
     .menu-underline {
+
       stroke: #6e5139;
+
       stroke-width: 1.4;
 
       vector-effect: non-scaling-stroke;
@@ -106,12 +130,15 @@
       transition: opacity .18s ease;
 
       pointer-events: none;
+
     }
 
 
     .menu-link:hover .menu-underline,
     .menu-link:focus .menu-underline {
+
       opacity: 1;
+
     }
 
 
@@ -119,10 +146,13 @@
     /* ==================================================
        SUSCRIBIRME
 
-       Sólo borde negro algo más grueso.
+       Solamente borde negro.
+       Sin iluminación interior.
+       Sin sombra.
     ================================================== */
 
     .subscribe-border {
+
       fill: transparent;
 
       stroke: rgba(0, 0, 0, .92);
@@ -136,17 +166,25 @@
       transition: opacity .18s ease;
 
       pointer-events: none;
+
     }
 
 
     .subscribe-link:hover .subscribe-border,
     .subscribe-link:focus .subscribe-border {
+
       opacity: 1;
+
     }
 
 
 
+    /* ==================================================
+       FOCO TECLADO
+    ================================================== */
+
     .focus-outline {
+
       fill: none;
 
       stroke: #6e5139;
@@ -158,18 +196,24 @@
       opacity: 0;
 
       pointer-events: none;
+
     }
 
 
     .menu-link:focus-visible .focus-outline,
     .subscribe-link:focus-visible .focus-outline {
+
       opacity: .75;
+
     }
 
 
     a {
+
       outline: none;
+
       -webkit-tap-highlight-color: transparent;
+
     }
 
 
@@ -188,6 +232,8 @@
 
       padding: 0;
 
+      overflow: visible;
+
       border:
         1px solid rgba(112, 82, 61, .20);
 
@@ -200,7 +246,6 @@
       box-shadow:
         0 24px 70px rgba(54, 42, 33, .20);
 
-      overflow: visible;
     }
 
 
@@ -212,6 +257,7 @@
       backdrop-filter: blur(3px);
 
       -webkit-backdrop-filter: blur(3px);
+
     }
 
 
@@ -224,11 +270,14 @@
         46px
         46px
         42px;
+
     }
 
 
 
-    /* X */
+    /* ==================================================
+       CERRAR
+    ================================================== */
 
     .modal-close {
 
@@ -263,14 +312,21 @@
 
       transition:
         opacity .2s ease;
+
     }
 
 
     .modal-close:hover {
+
       opacity: 1;
+
     }
 
 
+
+    /* ==================================================
+       MARCA MODAL
+    ================================================== */
 
     .modal-brand {
 
@@ -288,9 +344,14 @@
       text-transform: uppercase;
 
       color: #70523d;
+
     }
 
 
+
+    /* ==================================================
+       TÍTULO
+    ================================================== */
 
     .modal-title {
 
@@ -314,6 +375,7 @@
       letter-spacing: -.02em;
 
       color: #5e4634;
+
     }
 
 
@@ -337,6 +399,7 @@
       line-height: 1.55;
 
       color: #816b59;
+
     }
 
 
@@ -402,6 +465,7 @@
 
       transition:
         border-color .2s ease;
+
     }
 
 
@@ -431,8 +495,6 @@
 
       display: block;
 
-      overflow: visible;
-
     }
 
 
@@ -440,19 +502,10 @@
 
       width: 100%;
 
-      padding-top: 5px;
-
-      padding-bottom: 9px;
-
       background: transparent;
 
     }
 
-
-    /*
-      Selector de país integrado
-      con la estética Clara Ortiz
-    */
 
     .iti__selected-country {
 
@@ -464,8 +517,6 @@
     .iti__selected-country-primary {
 
       padding-left: 0;
-
-      padding-right: 8px;
 
     }
 
@@ -485,12 +536,12 @@
 
 
 
-    /* Caja que se abre con los países */
+    /* LISTA DE PAÍSES */
 
-    .iti__country-list,
     .iti__dropdown-content {
 
-      background: #f5f0ea !important;
+      background:
+        #f5f0ea !important;
 
       border:
         1px solid rgba(112, 82, 61, .20) !important;
@@ -499,8 +550,6 @@
         0 14px 38px rgba(54, 42, 33, .16) !important;
 
       color: #5e4634;
-
-      font-size: 13px;
 
     }
 
@@ -521,12 +570,13 @@
     }
 
 
-
     .iti__search-input {
 
-      background: #f5f0ea !important;
+      background:
+        #f5f0ea !important;
 
-      color: #5e4634 !important;
+      color:
+        #5e4634 !important;
 
       border:
         0 !important;
@@ -534,22 +584,16 @@
       border-bottom:
         1px solid #c7b8ab !important;
 
-      outline: none !important;
+      outline:
+        none !important;
 
     }
 
 
 
-    /* Línea divisoria debajo de Uruguay */
-
-    .iti__country[data-iso2="uy"] {
-
-      border-bottom:
-        1px solid rgba(112, 82, 61, .18);
-
-    }
-
-
+    /* ==================================================
+       NOTA
+    ================================================== */
 
     .contact-note {
 
@@ -602,6 +646,7 @@
 
       transition:
         opacity .2s ease;
+
     }
 
 
@@ -736,7 +781,7 @@
 
 
   <!-- ==================================================
-       HOME RESPONSIVE
+       HOME
   ================================================== -->
 
   <main class="hero">
@@ -760,7 +805,9 @@
 
 
 
-      <!-- IMAGEN -->
+      <!-- ==================================================
+           IMAGEN
+      ================================================== -->
 
       <image
 
@@ -791,6 +838,8 @@
         class="subscribe-link"
 
         href="#suscribirme"
+
+        xlink:href="#suscribirme"
 
         aria-label="Suscribirme"
 
@@ -856,6 +905,8 @@
 
         href="#concepto"
 
+        xlink:href="#concepto"
+
         aria-label="Concepto"
 
       >
@@ -918,6 +969,8 @@
 
         href="#estetica"
 
+        xlink:href="#estetica"
+
         aria-label="Estética"
 
       >
@@ -976,9 +1029,15 @@
 
       <a
 
+        id="contactLink"
+
         class="menu-link"
 
-        href="contacto.html"
+        href="./contacto.html"
+
+        xlink:href="./contacto.html"
+
+        target="_self"
 
         aria-label="Contacto"
 
@@ -1055,6 +1114,8 @@
     <div class="modal-inner">
 
 
+      <!-- CERRAR -->
+
       <button
 
         id="closeModal"
@@ -1073,11 +1134,11 @@
 
 
 
-      <div
+      <!-- ==================================================
+           FORMULARIO
+      ================================================== -->
 
-        id="modalContent"
-
-      >
+      <div id="modalContent">
 
 
         <div class="modal-brand">
@@ -1104,15 +1165,11 @@
 
 
 
-        <!-- ==================================================
-             FORMULARIO
-        ================================================== -->
-
         <form
 
           id="subscribeForm"
 
-          action="https://formsubmit.co/TU_EMAIL"
+          action="https://formsubmit.co/fabiofuentes@gmail.com"
 
           method="POST"
 
@@ -1121,6 +1178,8 @@
         >
 
 
+
+          <!-- ASUNTO -->
 
           <input
 
@@ -1133,6 +1192,9 @@
           >
 
 
+
+          <!-- SIN CAPTCHA -->
+
           <input
 
             type="hidden"
@@ -1143,6 +1205,9 @@
 
           >
 
+
+
+          <!-- FORMATO MAIL -->
 
           <input
 
@@ -1155,7 +1220,8 @@
           >
 
 
-          <!-- Número internacional final -->
+
+          <!-- WHATSAPP COMPLETO -->
 
           <input
 
@@ -1169,7 +1235,9 @@
 
 
 
-          <!-- NOMBRE -->
+          <!-- ==================================================
+               NOMBRE
+          ================================================== -->
 
           <div class="field">
 
@@ -1200,7 +1268,9 @@
 
 
 
-          <!-- WHATSAPP -->
+          <!-- ==================================================
+               WHATSAPP
+          ================================================== -->
 
           <div class="field phone-field">
 
@@ -1227,7 +1297,9 @@
 
 
 
-          <!-- MAIL -->
+          <!-- ==================================================
+               MAIL
+          ================================================== -->
 
           <div class="field">
 
@@ -1285,7 +1357,7 @@
 
 
       <!-- ==================================================
-           GRACIAS
+           MENSAJE GRACIAS
       ================================================== -->
 
       <div
@@ -1304,11 +1376,13 @@
         </div>
 
 
+
         <h3 class="success-title">
 
           Gracias.
 
         </h3>
+
 
 
         <p class="success-text">
@@ -1317,6 +1391,7 @@
           Muy pronto vas a saber de nosotros.
 
         </p>
+
 
 
         <button
@@ -1345,7 +1420,9 @@
 
 
 
-  <!-- envío invisible -->
+  <!-- ==================================================
+       ENVÍO INVISIBLE
+  ================================================== -->
 
   <iframe
 
@@ -1359,16 +1436,17 @@
 
 
   <!-- ==================================================
-       TELÉFONO INTERNACIONAL
+       SELECTOR INTERNACIONAL
   ================================================== -->
 
   <script
-    src="https://cdn.jsdelivr.net/npm/intl-tel-input@29.2.3/build/js/intlTelInput.min.js"
+    src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"
   ></script>
 
 
 
   <script>
+
 
     /* ==================================================
        ELEMENTOS
@@ -1380,6 +1458,10 @@
 
     const openSubscribe =
       document.getElementById("openSubscribe");
+
+
+    const contactLink =
+      document.getElementById("contactLink");
 
 
     const closeModal =
@@ -1420,56 +1502,57 @@
 
 
     /* ==================================================
-       BANDERAS / PAÍSES
+       SELECTOR DE PAÍSES
+
+       Argentina primero.
+       Uruguay segundo.
+       Después resto del mundo.
     ================================================== */
 
-    const iti = window.intlTelInput(
+    const iti =
+      window.intlTelInput(
 
-      whatsapp,
+        whatsapp,
 
-      {
+        {
 
-        initialCountry: "ar",
+          initialCountry: "ar",
 
-        countryOrder: [
-          "ar",
-          "uy"
-        ],
+          countryOrder: [
+            "ar",
+            "uy"
+          ],
 
-        separateDialCode: true,
+          separateDialCode: true,
 
-        showFlags: true,
+          loadUtils: () =>
+            import(
+              "https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js"
+            )
 
-        countrySearch: true,
+        }
 
-        countryNameLocale: "es",
-
-        formatAsYouType: true,
-
-        loadUtils: () =>
-          import(
-            "https://cdn.jsdelivr.net/npm/intl-tel-input@29.2.3/build/js/utils.js"
-          )
-
-      }
-
-    );
+      );
 
 
 
     /* ==================================================
-       ABRIR
+       ABRIR SUSCRIPCIÓN
     ================================================== */
 
     function openModal() {
 
+
       form.reset();
 
+
       whatsappFull.value = "";
+
 
       modalContent.classList.remove(
         "hidden"
       );
+
 
       successMessage.classList.remove(
         "visible"
@@ -1483,11 +1566,18 @@
       }
 
 
-      setTimeout(() => {
+      setTimeout(
 
-        nombre.focus();
+        function() {
 
-      }, 60);
+          nombre.focus();
+
+        },
+
+        60
+
+      );
+
 
     }
 
@@ -1499,15 +1589,21 @@
 
     function closeSubscription() {
 
+
       if (dialog.open) {
 
         dialog.close();
 
       }
 
+
     }
 
 
+
+    /* ==================================================
+       CLICK SUSCRIBIRME
+    ================================================== */
 
     openSubscribe.addEventListener(
 
@@ -1515,15 +1611,50 @@
 
       function(event) {
 
+
         event.preventDefault();
 
+
         openModal();
+
 
       }
 
     );
 
 
+
+    /* ==================================================
+       CLICK CONTACTO
+
+       Lo forzamos por JavaScript además del href.
+       Así funciona correctamente también desde SVG/Safari.
+    ================================================== */
+
+    contactLink.addEventListener(
+
+      "click",
+
+      function(event) {
+
+
+        event.preventDefault();
+
+
+        window.location.assign(
+          "./contacto.html"
+        );
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       CERRAR X
+    ================================================== */
 
     closeModal.addEventListener(
 
@@ -1535,6 +1666,10 @@
 
 
 
+    /* ==================================================
+       CERRAR DESPUÉS DE ENVIAR
+    ================================================== */
+
     closeSuccess.addEventListener(
 
       "click",
@@ -1545,7 +1680,9 @@
 
 
 
-    /* clic fuera */
+    /* ==================================================
+       CERRAR HACIENDO CLICK FUERA
+    ================================================== */
 
     dialog.addEventListener(
 
@@ -1575,6 +1712,7 @@
 
         }
 
+
       }
 
     );
@@ -1582,25 +1720,30 @@
 
 
     /* ==================================================
-       FORMULARIO
+       VALIDACIÓN Y ENVÍO
     ================================================== */
 
     form.addEventListener(
 
       "submit",
 
-      async function(event) {
+      function(event) {
 
 
         event.preventDefault();
 
 
 
+        /* Nombre obligatorio */
+
         if (!form.checkValidity()) {
+
 
           form.reportValidity();
 
+
           return;
+
 
         }
 
@@ -1617,15 +1760,23 @@
 
 
 
+        /*
+          Debe completar WhatsApp o Mail.
+        */
+
         if (!hasWhatsapp && !hasEmail) {
+
 
           email.setCustomValidity(
             "Ingresá un WhatsApp o un mail."
           );
 
+
           email.reportValidity();
 
+
           return;
+
 
         }
 
@@ -1635,25 +1786,27 @@
 
 
 
-        /*
-          Si escribió WhatsApp,
-          guardamos el número completo
-          con código internacional.
-        */
+        /* ==================================================
+           ARMAR WHATSAPP INTERNACIONAL
+        ================================================== */
 
         if (hasWhatsapp) {
 
 
-          try {
+          const internationalNumber =
+            iti.getNumber();
 
-            await iti.promise;
+
+          if (internationalNumber) {
+
 
             whatsappFull.value =
-              iti.getNumber();
+              internationalNumber;
+
 
           }
 
-          catch (error) {
+          else {
 
 
             const country =
@@ -1661,10 +1814,15 @@
 
 
             whatsappFull.value =
+
               "+" +
+
               country.dialCode +
+
               " " +
+
               whatsapp.value;
+
 
           }
 
@@ -1673,18 +1831,17 @@
 
 
 
-        /*
-          Enviar a FormSubmit dentro
-          del iframe invisible.
-        */
+        /* ==================================================
+           ENVIAR A FORMSUBMIT
+        ================================================== */
 
         form.submit();
 
 
 
-        /*
-          Mostrar agradecimiento.
-        */
+        /* ==================================================
+           MOSTRAR GRACIAS
+        ================================================== */
 
         modalContent.classList.add(
           "hidden"
@@ -1702,7 +1859,9 @@
 
 
 
-    /* limpia error cuando escribe */
+    /* ==================================================
+       LIMPIAR ERROR AL ESCRIBIR
+    ================================================== */
 
     whatsapp.addEventListener(
 
@@ -1732,8 +1891,11 @@
 
 
     /* ==================================================
-       ABRIR DESDE contacto.html
+       SI VENIMOS DESDE contacto.html
+
        index.html#suscribirme
+
+       abre automáticamente la caja.
     ================================================== */
 
     if (
