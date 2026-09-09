@@ -15,10 +15,6 @@
 
   <style>
 
-    /* ======================================================
-       RESET
-       ====================================================== */
-
     * {
       margin: 0;
       padding: 0;
@@ -34,13 +30,17 @@
     }
 
 
+    /* ======================================================
+       TRANSICIÓN ENTRE PÁGINAS
+       ====================================================== */
+
     body {
       overflow: hidden;
 
       opacity: 0;
 
       transition:
-        opacity 0.35s ease;
+        opacity 0.55s ease;
     }
 
 
@@ -54,45 +54,52 @@
     }
 
 
-
     /* ======================================================
-       PÁGINA
-       contacto.jpg mantiene siempre su proporción
+       ESCENARIO
+
+       contacto.jpg = 1670 × 942
        ====================================================== */
 
-    .pagina {
+    .page {
+
       position: relative;
 
-      width: 100vw;
-      height: 100vh;
-      height: 100svh;
+      width: min(
+        100vw,
+        calc(100svh * 1670 / 942)
+      );
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      aspect-ratio: 1670 / 942;
 
-      background: #d8cdc1;
+      margin: auto;
 
       overflow: hidden;
     }
 
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
 
     /* ======================================================
        IMAGEN
        ====================================================== */
 
-    .pagina-imagen {
+    .page-image {
+
       position: absolute;
+
+      inset: 0;
 
       width: 100%;
       height: 100%;
 
-      inset: 0;
+      object-fit: fill;
 
       display: block;
-
-      object-fit: contain;
 
       user-select: none;
 
@@ -102,13 +109,15 @@
     }
 
 
-
     /* ======================================================
-       CAPA INTERACTIVA
-       Usa las mismas coordenadas que la imagen
+       SVG INTERACTIVO
+
+       Usa exactamente el mismo sistema 1670 × 942
+       que contacto.jpg.
        ====================================================== */
 
     .overlay {
+
       position: absolute;
 
       inset: 0;
@@ -116,113 +125,55 @@
       width: 100%;
       height: 100%;
 
+      display: block;
+
       z-index: 10;
     }
 
 
-    .hotspot {
-      position: absolute;
+    .hit {
 
-      display: block;
+      fill: transparent;
+
+      pointer-events: all;
 
       cursor: pointer;
-
-      text-decoration: none;
     }
-
 
 
     /* ======================================================
-       LOGO
+       RAYITAS
+
+       Se dibujan en la coordenada exacta
+       del menú original.
        ====================================================== */
 
-    .logo-link {
-      left: 10.8%;
-      top: 5.4%;
+    .menu-line {
 
-      width: 27%;
-      height: 11%;
-    }
+      stroke: #6e5139;
 
+      stroke-width: 1.2;
 
+      vector-effect: non-scaling-stroke;
 
-    /* ======================================================
-       MENÚ SUPERIOR
-
-       Coordenadas aproximadas de contacto.jpg
-       ====================================================== */
-
-    .concepto-link {
-      left: 70.7%;
-      top: 3.8%;
-
-      width: 7.5%;
-      height: 5%;
-    }
-
-
-    .estetica-link {
-      left: 79.5%;
-      top: 3.8%;
-
-      width: 7.2%;
-      height: 5%;
-    }
-
-
-    .contacto-link {
-      left: 88.1%;
-      top: 3.8%;
-
-      width: 7.5%;
-      height: 5%;
-    }
-
-
-
-    /* ======================================================
-       RAYITA DE HOVER
-       ====================================================== */
-
-    .menu-link::after {
-      content: "";
-
-      position: absolute;
-
-      left: 10%;
-      right: 10%;
-
-      bottom: 6%;
-
-      height: 1px;
-
-      background: #6e5139;
-
-      transform: scaleX(0);
-
-      transform-origin: center;
+      opacity: 0;
 
       transition:
-        transform 0.22s ease;
+        opacity 0.25s ease;
+
+      pointer-events: none;
     }
 
 
-    .menu-link:hover::after {
-      transform: scaleX(1);
+    .menu-link:hover .menu-line,
+    .menu-link:focus .menu-line {
+
+      opacity: 1;
     }
-
-
-
-    /* CONTACTO YA ESTÁ ACTIVO */
-
-    .contacto-link::after {
-      transform: scaleX(1);
-    }
-
 
 
     /* ======================================================
-       RESPONSIVE
+       CELULAR
        ====================================================== */
 
     @media
@@ -231,23 +182,24 @@
     (orientation: portrait) {
 
       body {
+
+        align-items: flex-start;
+
         overflow-x: hidden;
         overflow-y: auto;
       }
 
 
-      .pagina {
+      .page {
+
         width: 100vw;
 
         height: auto;
 
-        aspect-ratio: 16 / 9;
-
-        align-items: flex-start;
+        aspect-ratio: 1670 / 942;
       }
 
     }
-
 
 
     @media
@@ -255,16 +207,16 @@
     and
     (orientation: landscape) {
 
-      .pagina {
-        height: 100svh;
+      .page {
 
         width: auto;
 
-        aspect-ratio: 16 / 9;
+        height: 100svh;
+
+        aspect-ratio: 1670 / 942;
       }
 
     }
-
 
   </style>
 
@@ -275,15 +227,15 @@
 <body>
 
 
-  <main class="pagina">
+  <main class="page">
 
 
     <!-- ==================================================
-         IMAGEN COMPLETA
+         IMAGEN
          ================================================== -->
 
     <img
-      class="pagina-imagen"
+      class="page-image"
       src="./contacto.jpg"
       alt="Clara Ortiz — Contacto"
     >
@@ -291,50 +243,189 @@
 
 
     <!-- ==================================================
-         LOGO → HOME
+         NAVEGACIÓN
+
+         Exactamente las mismas coordenadas
+         que contacto.jpg
          ================================================== -->
 
-    <a
-      class="hotspot logo-link internal-link"
-      href="index.html"
-      aria-label="Volver al inicio"
-    ></a>
+    <svg
+
+      class="overlay"
+
+      viewBox="0 0 1670 942"
+
+      preserveAspectRatio="none"
+
+      xmlns="http://www.w3.org/2000/svg"
+
+      aria-label="Navegación Clara Ortiz"
+
+    >
 
 
 
-    <!-- ==================================================
-         CONCEPTO
-         ================================================== -->
+      <!-- =================================================
+           LOGO → HOME
+           ================================================= -->
 
-    <a
-      class="hotspot menu-link concepto-link internal-link"
-      href="concepto.html"
-      aria-label="Concepto"
-    ></a>
+      <a
+        class="internal-link"
+        href="index.html"
+        aria-label="Inicio"
+      >
+
+        <rect
+
+          class="hit"
+
+          x="165"
+          y="38"
+
+          width="420"
+          height="105"
+
+        />
+
+      </a>
 
 
 
-    <!-- ==================================================
-         ESTÉTICA
-         ================================================== -->
+      <!-- =================================================
+           CONCEPTO
 
-    <a
-      class="hotspot menu-link estetica-link internal-link"
-      href="estetica.html"
-      aria-label="Estética"
-    ></a>
+           Texto real:
+           x = 1179 → 1286
+
+           Línea:
+           y = 82
+           ================================================= -->
+
+      <a
+
+        class="menu-link internal-link"
+
+        href="concepto.html"
+
+        aria-label="Concepto"
+
+      >
+
+
+        <rect
+
+          class="hit"
+
+          x="1165"
+          y="37"
+
+          width="135"
+          height="58"
+
+        />
+
+
+        <line
+
+          class="menu-line"
+
+          x1="1179"
+          y1="82"
+
+          x2="1286"
+          y2="82"
+
+        />
+
+
+      </a>
 
 
 
-    <!-- ==================================================
-         CONTACTO
-         ================================================== -->
+      <!-- =================================================
+           ESTÉTICA
 
-    <a
-      class="hotspot menu-link contacto-link"
-      href="contacto.html"
-      aria-label="Contacto"
-    ></a>
+           Texto real:
+           x = 1339 → 1430
+
+           Línea:
+           y = 82
+           ================================================= -->
+
+      <a
+
+        class="menu-link internal-link"
+
+        href="estetica.html"
+
+        aria-label="Estética"
+
+      >
+
+
+        <rect
+
+          class="hit"
+
+          x="1325"
+          y="37"
+
+          width="120"
+          height="58"
+
+        />
+
+
+        <line
+
+          class="menu-line"
+
+          x1="1339"
+          y1="82"
+
+          x2="1430"
+          y2="82"
+
+        />
+
+
+      </a>
+
+
+
+      <!-- =================================================
+           CONTACTO
+
+           La rayita YA FORMA PARTE de contacto.jpg.
+           No dibujamos otra encima.
+           ================================================= -->
+
+      <a
+
+        href="contacto.html"
+
+        aria-label="Contacto"
+
+      >
+
+
+        <rect
+
+          class="hit"
+
+          x="1468"
+          y="37"
+
+          width="136"
+          height="58"
+
+        />
+
+
+      </a>
+
+
+    </svg>
 
 
   </main>
@@ -344,35 +435,39 @@
   <script>
 
     /* ======================================================
-       APARICIÓN DE LA PÁGINA
+       ENTRADA SUAVE
        ====================================================== */
+
+    function mostrarPagina() {
+
+      requestAnimationFrame(
+        function () {
+
+          document.body
+            .classList
+            .add("page-loaded");
+
+        }
+      );
+
+    }
+
 
     window.addEventListener(
       "DOMContentLoaded",
-      function () {
-
-        requestAnimationFrame(
-          function () {
-
-            document.body.classList.add(
-              "page-loaded"
-            );
-
-          }
-        );
-
-      }
+      mostrarPagina
     );
 
 
 
     /* ======================================================
-       TRANSICIÓN HACIA OTRA PÁGINA
+       SALIDA SUAVE
        ====================================================== */
 
     document.addEventListener(
       "click",
-      function (event) {
+      function(event) {
+
 
         const link =
           event.target.closest(
@@ -397,25 +492,33 @@
         event.preventDefault();
 
 
-        document.body.classList.remove(
-          "page-loaded"
-        );
+        document.body
+          .classList
+          .remove("page-loaded");
 
 
-        document.body.classList.add(
-          "page-leaving"
-        );
+        document.body
+          .classList
+          .add("page-leaving");
 
+
+
+        /*
+          Esperamos a que termine
+          casi todo el fade.
+        */
 
         setTimeout(
-          function () {
+          function() {
 
             window.location.href =
               href;
 
           },
-          300
+
+          500
         );
+
 
       }
     );
@@ -423,27 +526,29 @@
 
 
     /* ======================================================
-       BOTÓN ATRÁS / ADELANTE DEL NAVEGADOR
+       ATRÁS / ADELANTE DEL NAVEGADOR
        ====================================================== */
 
     window.addEventListener(
       "pageshow",
-      function () {
+      function() {
 
-        document.body.classList.remove(
-          "page-leaving"
-        );
+
+        document.body
+          .classList
+          .remove("page-leaving");
 
 
         requestAnimationFrame(
-          function () {
+          function() {
 
-            document.body.classList.add(
-              "page-loaded"
-            );
+            document.body
+              .classList
+              .add("page-loaded");
 
           }
         );
+
 
       }
     );
