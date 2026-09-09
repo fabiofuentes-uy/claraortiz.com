@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -10,43 +9,35 @@
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
-  <!-- ======================================================
+  <!-- =====================================================
        TÍTULO DE LA PESTAÑA
-       ====================================================== -->
+       ===================================================== -->
 
   <title>Clara Ortiz</title>
 
 
-  <!-- ======================================================
+  <!-- =====================================================
        FAVICON CLARA ORTIZ
-       ====================================================== -->
+       INCRUSTADO DIRECTAMENTE EN EL HTML
+       ===================================================== -->
 
   <link
     rel="icon"
     type="image/png"
-    href="./favicon.png"
+    sizes="128x128"
+    href="data:image/png;base64,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"
   >
 
   <link
     rel="shortcut icon"
     type="image/png"
-    href="./favicon.png"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    href="./favicon.png"
-  >
-
-  <meta
-    name="theme-color"
-    content="#eee8e1"
+    href="data:image/png;base64,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"
   >
 
 
-  <!-- ======================================================
-       TELÉFONO INTERNACIONAL
-       ====================================================== -->
+  <!-- =====================================================
+       SELECTOR DE PAÍSES / WHATSAPP
+       ===================================================== -->
 
   <link
     rel="stylesheet"
@@ -55,10 +46,6 @@
 
 
   <style>
-
-    /* ======================================================
-       RESET
-       ====================================================== */
 
     * {
       margin: 0;
@@ -94,12 +81,9 @@
     }
 
 
-
-    /* ======================================================
+    /* =====================================================
        PORTADA RESPONSIVE
-
-       home.jpg = 1670 × 941
-       ====================================================== */
+       ===================================================== */
 
     .hero {
       position: relative;
@@ -125,22 +109,17 @@
       width: 100%;
       height: 100%;
 
+      object-fit: contain;
+
       display: block;
 
-      object-fit: contain;
+      pointer-events: none;
 
       user-select: none;
 
       -webkit-user-drag: none;
-
-      pointer-events: none;
     }
 
-
-
-    /* ======================================================
-       SVG INTERACTIVO
-       ====================================================== */
 
     .overlay {
       position: absolute;
@@ -165,10 +144,9 @@
     }
 
 
-
-    /* ======================================================
-       MENÚ SUPERIOR
-       ====================================================== */
+    /* =====================================================
+       MENÚ
+       ===================================================== */
 
     .menu-underline {
       stroke: #6e5139;
@@ -191,19 +169,17 @@
     }
 
 
-
-    /* ======================================================
+    /* =====================================================
        SUSCRIBIRME
-
-       Sólo se ilumina el borde del óvalo
-       ====================================================== */
+       BORDE NEGRO FINO
+       ===================================================== */
 
     .subscribe-highlight {
       fill: none;
 
-      stroke: rgba(255, 255, 255, 0.78);
+      stroke: rgba(0, 0, 0, 0.55);
 
-      stroke-width: 1.25;
+      stroke-width: 0.85;
 
       vector-effect: non-scaling-stroke;
 
@@ -220,11 +196,6 @@
       opacity: 1;
     }
 
-
-
-    /* ======================================================
-       ACCESIBILIDAD
-       ====================================================== */
 
     .focus-outline {
       fill: none;
@@ -247,10 +218,9 @@
     }
 
 
-
-    /* ======================================================
+    /* =====================================================
        MODAL
-       ====================================================== */
+       ===================================================== */
 
     dialog {
       width: min(92vw, 440px);
@@ -292,11 +262,6 @@
     }
 
 
-
-    /* ======================================================
-       CERRAR
-       ====================================================== */
-
     .modal-close {
       position: absolute;
 
@@ -316,8 +281,6 @@
 
       font-weight: 300;
 
-      line-height: 1;
-
       cursor: pointer;
 
       opacity: 0.65;
@@ -330,11 +293,6 @@
       opacity: 1;
     }
 
-
-
-    /* ======================================================
-       IDENTIDAD MODAL
-       ====================================================== */
 
     .modal-brand {
       margin-bottom: 9px;
@@ -378,10 +336,9 @@
     }
 
 
-
-    /* ======================================================
+    /* =====================================================
        CAMPOS
-       ====================================================== */
+       ===================================================== */
 
     .field {
       margin-bottom: 19px;
@@ -423,8 +380,6 @@
       font-family: inherit;
 
       font-size: 15px;
-
-      transition: border-color 0.2s ease;
     }
 
 
@@ -438,10 +393,9 @@
     }
 
 
-
-    /* ======================================================
+    /* =====================================================
        WHATSAPP INTERNACIONAL
-       ====================================================== */
+       ===================================================== */
 
     .iti {
       width: 100%;
@@ -470,8 +424,6 @@
       font-family: inherit;
 
       font-size: 15px;
-
-      transition: border-color 0.2s ease;
     }
 
 
@@ -490,16 +442,6 @@
     }
 
 
-    .iti__selected-country-primary:hover {
-      background: rgba(113, 84, 62, 0.05) !important;
-    }
-
-
-
-    /* ======================================================
-       LISTADO DE PAÍSES
-       ====================================================== */
-
     .iti__dropdown-content {
       z-index: 999999;
 
@@ -512,16 +454,6 @@
       box-shadow:
         0 14px 35px rgba(52, 39, 28, 0.18);
 
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-    }
-
-
-    .iti__country {
       color: #5e4634;
     }
 
@@ -535,16 +467,13 @@
     .iti__search-input {
       font-family: inherit;
 
+      background: #fffaf6;
+
       color: #5e4634;
 
       border-color: #d7cabf;
-
-      background: #fffaf6;
     }
 
-
-
-    /* Argentina + Uruguay prioritarios */
 
     .iti__country-selector:has(
       .iti__search-input:placeholder-shown
@@ -554,10 +483,9 @@
     }
 
 
-
-    /* ======================================================
-       AYUDA / ERROR
-       ====================================================== */
+    /* =====================================================
+       TEXTO AUXILIAR
+       ===================================================== */
 
     .contact-hint {
       margin-top: -7px;
@@ -585,10 +513,9 @@
     }
 
 
-
-    /* ======================================================
+    /* =====================================================
        BOTÓN ENVIAR
-       ====================================================== */
+       ===================================================== */
 
     .submit-button {
       width: 100%;
@@ -628,10 +555,9 @@
     }
 
 
-
-    /* ======================================================
+    /* =====================================================
        GRACIAS
-       ====================================================== */
+       ===================================================== */
 
     .success {
       display: none;
@@ -691,10 +617,6 @@
       text-transform: uppercase;
 
       cursor: pointer;
-
-      transition:
-        background 0.2s ease,
-        color 0.2s ease;
     }
 
 
@@ -705,27 +627,9 @@
     }
 
 
-
-    /* ======================================================
+    /* =====================================================
        RESPONSIVE
-       ====================================================== */
-
-    @media
-    (max-width: 1100px),
-    (max-height: 700px) {
-
-      .hero {
-        width: min(
-          100vw,
-          calc(100svh * 1670 / 941)
-        );
-      }
-
-    }
-
-
-
-    /* CELULAR VERTICAL */
+       ===================================================== */
 
     @media
     (max-width: 700px)
@@ -767,9 +671,6 @@
     }
 
 
-
-    /* CELULAR HORIZONTAL */
-
     @media
     (max-height: 500px)
     and
@@ -806,9 +707,9 @@
 <body>
 
 
-  <!-- ======================================================
+  <!-- =====================================================
        PORTADA
-       ====================================================== -->
+       ===================================================== -->
 
   <main class="hero">
 
@@ -831,9 +732,7 @@
 
 
 
-      <!-- ==================================================
-           SUSCRIBIRME
-           ================================================== -->
+      <!-- SUSCRIBIRME -->
 
       <a
         class="subscribe-link"
@@ -877,9 +776,7 @@
 
 
 
-      <!-- ==================================================
-           CONCEPTO
-           ================================================== -->
+      <!-- CONCEPTO -->
 
       <a
         class="menu-link"
@@ -921,9 +818,7 @@
 
 
 
-      <!-- ==================================================
-           ESTÉTICA
-           ================================================== -->
+      <!-- ESTÉTICA -->
 
       <a
         class="menu-link"
@@ -965,9 +860,7 @@
 
 
 
-      <!-- ==================================================
-           CONTACTO
-           ================================================== -->
+      <!-- CONTACTO -->
 
       <a
         class="menu-link"
@@ -1015,9 +908,9 @@
 
 
 
-  <!-- ======================================================
+  <!-- =====================================================
        MODAL SUSCRIPCIÓN
-       ====================================================== -->
+       ===================================================== -->
 
   <dialog id="subscribeModal">
 
@@ -1035,8 +928,6 @@
       </button>
 
 
-
-      <!-- FORMULARIO -->
 
       <div id="formView">
 
@@ -1159,9 +1050,6 @@
           >
 
 
-
-          <!-- EMAIL -->
-
           <input
             type="hidden"
             name="_subject"
@@ -1218,8 +1106,7 @@
 
 
         <p class="success-text">
-          Ya tenemos tus datos.
-          Muy pronto vas a saber de nosotros.
+          Ya tenemos tus datos. Muy pronto vas a saber de nosotros.
         </p>
 
 
@@ -1242,9 +1129,9 @@
 
 
 
-  <!-- ======================================================
+  <!-- =====================================================
        ENVÍO INVISIBLE
-       ====================================================== -->
+       ===================================================== -->
 
   <iframe
     name="hiddenFrame"
@@ -1255,75 +1142,60 @@
 
 
 
-  <!-- ======================================================
+  <!-- =====================================================
        TELÉFONO INTERNACIONAL
-       ====================================================== -->
+       ===================================================== -->
 
   <script
-    src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.2/build/js/intlTelInput.min.js"
+    src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.2/build/js/intlTelInputWithUtils.min.js"
   ></script>
 
 
 
-  <!-- ======================================================
-       JAVASCRIPT
-       ====================================================== -->
-
   <script>
-
 
     const openSubscribe =
       document.getElementById("openSubscribe");
 
-
     const modal =
       document.getElementById("subscribeModal");
-
 
     const closeModal =
       document.getElementById("closeModal");
 
-
     const successClose =
       document.getElementById("successClose");
-
 
     const form =
       document.getElementById("subscribeForm");
 
-
     const formView =
       document.getElementById("formView");
-
 
     const successView =
       document.getElementById("successView");
 
-
     const formError =
       document.getElementById("formError");
-
 
     const whatsappInput =
       document.getElementById("whatsapp");
 
-
     const whatsappFull =
       document.getElementById("whatsappFull");
-
 
     const emailInput =
       document.getElementById("email");
 
 
 
-    /* ======================================================
-       SELECTOR DE PAÍSES
+    /* =====================================================
+       PAÍSES
 
-       Argentina primera
-       Uruguay segunda
-       Luego todos los demás
-       ====================================================== */
+       Argentina primero.
+       Uruguay segundo.
+       Después todos los demás.
+       ===================================================== */
 
     const iti =
       window.intlTelInput(
@@ -1345,21 +1217,16 @@
 
           countryNameLocale: "es",
 
-          formatAsYouType: true,
-
-          loadUtils: () =>
-            import(
-              "https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.2/build/js/utils.js"
-            )
+          formatAsYouType: true
 
         }
       );
 
 
 
-    /* ======================================================
-       ABRIR
-       ====================================================== */
+    /* =====================================================
+       ABRIR MODAL
+       ===================================================== */
 
     openSubscribe.addEventListener(
       "click",
@@ -1367,18 +1234,14 @@
 
         event.preventDefault();
 
-
         formView.style.display =
           "block";
-
 
         successView.style.display =
           "none";
 
-
         formError.style.display =
           "none";
-
 
         modal.showModal();
 
@@ -1399,9 +1262,9 @@
 
 
 
-    /* ======================================================
+    /* =====================================================
        CERRAR
-       ====================================================== */
+       ===================================================== */
 
     closeModal.addEventListener(
       "click",
@@ -1424,26 +1287,31 @@
 
 
 
-    /* ======================================================
-       CLICK FUERA
-       ====================================================== */
+    /* =====================================================
+       CERRAR HACIENDO CLICK FUERA
+       ===================================================== */
 
     modal.addEventListener(
       "click",
       function(event) {
+
+
+        if (
+          event.target.closest &&
+          event.target.closest(".iti")
+        ) {
+          return;
+        }
+
 
         const rect =
           modal.getBoundingClientRect();
 
 
         const clickedOutside =
-
           event.clientX < rect.left ||
-
           event.clientX > rect.right ||
-
           event.clientY < rect.top ||
-
           event.clientY > rect.bottom;
 
 
@@ -1458,9 +1326,9 @@
 
 
 
-    /* ======================================================
+    /* =====================================================
        ENVÍO
-       ====================================================== */
+       ===================================================== */
 
     form.addEventListener(
       "submit",
@@ -1504,20 +1372,47 @@
 
 
 
-        /* Número internacional */
+        /* =================================================
+           WHATSAPP COMPLETO
+           ================================================= */
 
         if (whatsapp) {
 
 
-          whatsappFull.value =
-            iti.getNumber();
+          try {
 
+            whatsappFull.value =
+              iti.getNumber();
+
+          }
+
+          catch (error) {
+
+            whatsappFull.value =
+              "";
+
+          }
+
+
+
+          /*
+            Respaldo en caso de que
+            getNumber todavía no esté disponible.
+          */
 
           if (!whatsappFull.value) {
 
 
             const country =
-              iti.getSelectedCountryData();
+              iti.getSelectedCountryData
+                ? iti.getSelectedCountryData()
+                : null;
+
+
+            const dialCode =
+              country && country.dialCode
+                ? country.dialCode
+                : "";
 
 
             const cleanNumber =
@@ -1528,11 +1423,12 @@
 
 
             whatsappFull.value =
-              "+" +
-              country.dialCode +
-              cleanNumber;
+              dialCode
+                ? "+" + dialCode + cleanNumber
+                : cleanNumber;
 
           }
+
 
         }
 
@@ -1549,14 +1445,15 @@
 
 
 
-        /* Gracias inmediato */
+        /* =================================================
+           GRACIAS INMEDIATO
+           ================================================= */
 
         setTimeout(
           function() {
 
             formView.style.display =
               "none";
-
 
             successView.style.display =
               "block";
@@ -1567,19 +1464,17 @@
 
 
 
-        /* Limpiar después */
+        /* =================================================
+           LIMPIAR DESPUÉS
+           ================================================= */
 
         setTimeout(
           function() {
 
             form.reset();
 
-
             whatsappFull.value =
               "";
-
-
-            iti.setCountry("ar");
 
           },
           1500
