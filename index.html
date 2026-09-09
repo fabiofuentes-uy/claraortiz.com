@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
 
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -10,100 +16,101 @@
 
   <title>Clara Ortiz — Punta del Este</title>
 
+
   <style>
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
+
     html,
     body {
-      margin: 0;
       width: 100%;
-      min-height: 100%;
+      height: 100%;
       background: #eee8e1;
     }
 
+
     body {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
       overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
 
-    /* ========================================
-       IMAGEN PRINCIPAL
-    ======================================== */
+
+    /* ==================================================
+       HOME
+    ================================================== */
 
     .hero {
-      position: relative;
 
-      width: min(
-        100vw,
-        calc(100vh * 1670 / 941)
-      );
+      position: fixed;
 
-      aspect-ratio: 1670 / 941;
-    }
-
-
-    .hero-image {
-      position: absolute;
       inset: 0;
 
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
 
-      display: block;
-      object-fit: fill;
+      width: 100dvw;
+      height: 100dvh;
 
-      user-select: none;
-      -webkit-user-drag: none;
-      pointer-events: none;
-    }
+      overflow: hidden;
 
+      background: #eee8e1;
 
-    /* ========================================
-       SVG DE ENLACES
-    ======================================== */
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      display: block;
-      overflow: visible;
     }
 
 
     /*
-      Zonas invisibles clickeables.
+      Imagen + botones + zonas clickeables
+      viven dentro del MISMO SVG.
+
+      Por eso todos escalan juntos.
     */
 
-    .hit {
-      fill: transparent;
-      pointer-events: all;
-      cursor: pointer;
+    .hero-svg {
+
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
     }
 
 
 
-    /* ========================================
+    /* ==================================================
+       ZONAS CLICKEABLES
+    ================================================== */
+
+    .hit {
+
+      fill: transparent;
+
+      pointer-events: all;
+
+      cursor: pointer;
+
+    }
+
+
+
+    /* ==================================================
        MENÚ SUPERIOR
 
-       NO se ilumina el texto.
-       NO cambia de color.
-       NO aparece ningún rectángulo.
-
-       Solamente aparece una pequeña línea
-       debajo de cada palabra.
-    ======================================== */
+       NO ilumina el texto.
+       Solamente aparece la rayita.
+    ================================================== */
 
     .menu-underline {
+
       stroke: #6e5139;
 
       stroke-width: 1.4;
@@ -112,63 +119,66 @@
 
       opacity: 0;
 
-      transition: opacity 0.18s ease;
+      transition: opacity .18s ease;
 
       pointer-events: none;
+
     }
 
 
     .menu-link:hover .menu-underline,
     .menu-link:focus .menu-underline {
+
       opacity: 1;
+
     }
 
 
 
-    /* ========================================
+    /* ==================================================
        SUSCRIBIRME
 
-       Solamente aparece el borde negro.
-       Sin iluminación.
+       Sin brillo.
        Sin fondo.
        Sin sombra.
-       Sin modificar el tamaño.
-    ======================================== */
 
-    .subscribe-highlight {
+       Solamente borde negro.
+    ================================================== */
+
+    .subscribe-border {
 
       fill: transparent;
 
-      stroke: rgba(0, 0, 0, 0.88);
+      stroke: rgba(0, 0, 0, .92);
 
-      /*
-        Antes era más fino.
-        Lo aumentamos apenas.
-      */
-      stroke-width: 2.2;
+      stroke-width: 2.4;
 
       vector-effect: non-scaling-stroke;
 
       opacity: 0;
 
-      transition: opacity 0.18s ease;
+      transition: opacity .18s ease;
 
       pointer-events: none;
+
     }
 
 
-    .subscribe-link:hover .subscribe-highlight,
-    .subscribe-link:focus .subscribe-highlight {
+    .subscribe-link:hover .subscribe-border,
+    .subscribe-link:focus .subscribe-border {
+
       opacity: 1;
+
     }
 
 
 
-    /* ========================================
-       FOCO DE TECLADO
-    ======================================== */
+    /* ==================================================
+       ACCESIBILIDAD TECLADO
+    ================================================== */
 
     .focus-outline {
+
       fill: none;
 
       stroke: #6e5139;
@@ -180,97 +190,513 @@
       opacity: 0;
 
       pointer-events: none;
+
     }
 
 
     .menu-link:focus-visible .focus-outline,
     .subscribe-link:focus-visible .focus-outline {
-      opacity: 0.8;
+
+      opacity: .8;
+
+    }
+
+
+    a {
+
+      outline: none;
+
+      -webkit-tap-highlight-color: transparent;
+
     }
 
 
 
-    /* ========================================
+    /* ==================================================
+       MODAL SUSCRIBIRME
+    ================================================== */
+
+    .subscribe-dialog {
+
+      width: min(92vw, 520px);
+
+      max-height: 90vh;
+
+      margin: auto;
+
+      padding: 0;
+
+      border: 1px solid rgba(42, 36, 31, .28);
+
+      background: #f3efe7;
+
+      color: #28241f;
+
+      box-shadow:
+        0 25px 80px rgba(31, 25, 20, .24);
+
+    }
+
+
+    .subscribe-dialog::backdrop {
+
+      background: rgba(31, 27, 23, .38);
+
+      backdrop-filter: blur(2px);
+
+      -webkit-backdrop-filter: blur(2px);
+
+    }
+
+
+
+    .modal-inner {
+
+      position: relative;
+
+      padding: 48px 48px 44px;
+
+    }
+
+
+
+    /* X */
+
+    .modal-close-x {
+
+      position: absolute;
+
+      top: 17px;
+      right: 19px;
+
+      width: 34px;
+      height: 34px;
+
+      border: 0;
+
+      background: transparent;
+
+      color: #28241f;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 25px;
+
+      line-height: 1;
+
+      cursor: pointer;
+
+      opacity: .6;
+
+      transition: opacity .18s ease;
+
+    }
+
+
+    .modal-close-x:hover {
+
+      opacity: 1;
+
+    }
+
+
+
+    /* CLARA ORTIZ */
+
+    .modal-brand {
+
+      margin-bottom: 28px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 14px;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+    }
+
+
+
+    /* TÍTULO */
+
+    .modal-title {
+
+      margin: 0 0 16px;
+
+      max-width: 410px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(31px, 4vw, 43px);
+
+      line-height: 1.05;
+
+      font-weight: 400;
+
+      letter-spacing: -.025em;
+
+    }
+
+
+
+    .modal-intro {
+
+      margin: 0 0 34px;
+
+      max-width: 390px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 16px;
+
+      line-height: 1.55;
+
+      color: #625b52;
+
+    }
+
+
+
+    /* ==================================================
+       CAMPOS
+    ================================================== */
+
+    .field {
+
+      margin-bottom: 24px;
+
+    }
+
+
+    .field label {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 9px;
+
+      letter-spacing: .17em;
+
+      text-transform: uppercase;
+
+      color: #766e64;
+
+    }
+
+
+    .field input {
+
+      width: 100%;
+
+      padding: 8px 0 10px;
+
+      border: 0;
+
+      border-bottom:
+        1px solid rgba(40, 36, 31, .30);
+
+      border-radius: 0;
+
+      outline: none;
+
+      background: transparent;
+
+      color: #28241f;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 17px;
+
+      transition:
+        border-color .18s ease;
+
+    }
+
+
+    .field input:focus {
+
+      border-bottom-color: #28241f;
+
+    }
+
+
+
+    .contact-hint {
+
+      margin:
+        -9px
+        0
+        25px;
+
+      font-size: 10px;
+
+      line-height: 1.45;
+
+      color: #81786d;
+
+    }
+
+
+
+    /* ==================================================
+       BOTONES MODAL
+    ================================================== */
+
+    .modal-button {
+
+      display: inline-block;
+
+      margin-top: 8px;
+
+      padding:
+        11px
+        0
+        7px;
+
+      border: 0;
+
+      border-bottom:
+        1.5px solid #28241f;
+
+      background: transparent;
+
+      color: #28241f;
+
+      font-size: 10px;
+
+      letter-spacing: .19em;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition: opacity .18s ease;
+
+    }
+
+
+    .modal-button:hover {
+
+      opacity: .55;
+
+    }
+
+
+
+    /* ==================================================
+       MENSAJE DE GRACIAS
+    ================================================== */
+
+    .success {
+
+      display: none;
+
+      padding:
+        8px
+        0
+        3px;
+
+    }
+
+
+    .success.is-visible {
+
+      display: block;
+
+    }
+
+
+    .success-title {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 42px;
+
+      line-height: 1;
+
+      font-weight: 400;
+
+    }
+
+
+    .success-text {
+
+      margin:
+        0
+        0
+        30px;
+
+      max-width: 360px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 16px;
+
+      line-height: 1.55;
+
+      color: #625b52;
+
+    }
+
+
+    .is-hidden {
+
+      display: none !important;
+
+    }
+
+
+
+    /* iframe invisible para enviar sin salir de la web */
+
+    iframe[name="submitFrame"] {
+
+      display: none;
+
+    }
+
+
+
+    /* ==================================================
        MOBILE
-    ======================================== */
+    ================================================== */
 
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
 
-      body {
-        min-height: auto;
+      .subscribe-dialog {
 
-        display: block;
+        width:
+          calc(100vw - 28px);
 
-        overflow-x: hidden;
-        overflow-y: auto;
       }
 
 
-      .hero {
-        width: 100vw;
+      .modal-inner {
+
+        padding:
+          44px
+          28px
+          36px;
+
+      }
+
+
+      .modal-title {
+
+        font-size: 34px;
+
       }
 
     }
+
 
   </style>
 
 </head>
 
 
+
 <body>
 
+
+  <!-- ==================================================
+       HOME
+  ================================================== -->
 
   <main class="hero">
 
 
-    <!-- IMAGEN PRINCIPAL -->
-
-    <img
-      class="hero-image"
-      src="./home.jpg?v=6"
-      alt="Clara Ortiz — Punta del Este"
-    >
-
-
-
-    <!--
-      SVG con exactamente la misma proporción
-      que home.jpg.
-
-      Imagen original:
-      1670 × 941 px
-    -->
-
     <svg
-      class="overlay"
+
+      class="hero-svg"
 
       viewBox="0 0 1670 941"
 
-      preserveAspectRatio="none"
+      preserveAspectRatio="xMidYMid slice"
 
       xmlns="http://www.w3.org/2000/svg"
 
-      aria-label="Navegación de Clara Ortiz"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+
+      aria-label="Clara Ortiz"
+
     >
 
 
 
-      <!-- =====================================
+      <!-- =================================================
+           IMAGEN
+      ================================================== -->
+
+      <image
+
+        href="./home.jpg"
+
+        xlink:href="./home.jpg"
+
+        x="0"
+        y="0"
+
+        width="1670"
+        height="941"
+
+        preserveAspectRatio="none"
+
+      />
+
+
+
+      <!-- =================================================
            SUSCRIBIRME
-      ====================================== -->
+      ================================================== -->
 
       <a
+
+        id="openSubscribe"
+
         class="subscribe-link"
 
         href="#suscribirme"
 
         aria-label="Suscribirme"
+
       >
 
 
-        <!-- Área cómoda para hacer clic -->
+        <!-- Zona clickeable -->
 
         <rect
+
           class="hit"
 
           x="172"
@@ -280,18 +706,16 @@
           height="74"
 
           rx="37"
+
         />
 
 
-        <!--
-          Borde negro del óvalo.
 
-          Se encuentra exactamente encima
-          del botón dibujado en home.jpg.
-        -->
+        <!-- Borde negro -->
 
         <rect
-          class="subscribe-highlight"
+
+          class="subscribe-border"
 
           x="181.5"
           y="424.5"
@@ -300,12 +724,15 @@
           height="53"
 
           rx="26.5"
+
         />
 
 
-        <!-- Foco para navegación con teclado -->
+
+        <!-- Foco teclado -->
 
         <rect
+
           class="focus-outline"
 
           x="178"
@@ -315,6 +742,7 @@
           height="60"
 
           rx="30"
+
         />
 
 
@@ -322,23 +750,23 @@
 
 
 
-
-      <!-- =====================================
+      <!-- =================================================
            CONCEPTO
-      ====================================== -->
+      ================================================== -->
 
       <a
+
         class="menu-link"
 
         href="#concepto"
 
         aria-label="Concepto"
+
       >
 
 
-        <!-- Zona clickeable -->
-
         <rect
+
           class="hit"
 
           x="1174"
@@ -348,12 +776,12 @@
           height="47"
 
           rx="4"
+
         />
 
 
-        <!-- Línea debajo de CONCEPTO -->
-
         <line
+
           class="menu-underline"
 
           x1="1187"
@@ -361,12 +789,12 @@
 
           x2="1286"
           y2="68"
+
         />
 
 
-        <!-- Foco teclado -->
-
         <rect
+
           class="focus-outline"
 
           x="1180"
@@ -376,6 +804,7 @@
           height="26"
 
           rx="3"
+
         />
 
 
@@ -383,23 +812,23 @@
 
 
 
-
-      <!-- =====================================
+      <!-- =================================================
            ESTÉTICA
-      ====================================== -->
+      ================================================== -->
 
       <a
+
         class="menu-link"
 
         href="#estetica"
 
         aria-label="Estética"
+
       >
 
 
-        <!-- Zona clickeable -->
-
         <rect
+
           class="hit"
 
           x="1330"
@@ -409,12 +838,12 @@
           height="47"
 
           rx="4"
+
         />
 
 
-        <!-- Línea debajo de ESTÉTICA -->
-
         <line
+
           class="menu-underline"
 
           x1="1343"
@@ -422,12 +851,12 @@
 
           x2="1428"
           y2="68"
+
         />
 
 
-        <!-- Foco teclado -->
-
         <rect
+
           class="focus-outline"
 
           x="1336"
@@ -437,6 +866,7 @@
           height="26"
 
           rx="3"
+
         />
 
 
@@ -444,23 +874,23 @@
 
 
 
-
-      <!-- =====================================
+      <!-- =================================================
            CONTACTO
-      ====================================== -->
+      ================================================== -->
 
       <a
+
         class="menu-link"
 
         href="contacto.html"
 
         aria-label="Contacto"
+
       >
 
 
-        <!-- Zona clickeable -->
-
         <rect
+
           class="hit"
 
           x="1472"
@@ -470,12 +900,12 @@
           height="47"
 
           rx="4"
+
         />
 
 
-        <!-- Línea debajo de CONTACTO -->
-
         <line
+
           class="menu-underline"
 
           x1="1485"
@@ -483,12 +913,12 @@
 
           x2="1584"
           y2="68"
+
         />
 
 
-        <!-- Foco teclado -->
-
         <rect
+
           class="focus-outline"
 
           x="1478"
@@ -498,6 +928,7 @@
           height="26"
 
           rx="3"
+
         />
 
 
@@ -510,5 +941,760 @@
   </main>
 
 
+
+
+  <!-- ==================================================
+       MODAL SUSCRIBIRME
+  ================================================== -->
+
+  <dialog
+
+    id="subscribeDialog"
+
+    class="subscribe-dialog"
+
+  >
+
+
+    <div class="modal-inner">
+
+
+      <!-- CERRAR X -->
+
+      <button
+
+        id="closeSubscribeX"
+
+        class="modal-close-x"
+
+        type="button"
+
+        aria-label="Cerrar"
+
+      >
+
+        ×
+
+      </button>
+
+
+
+      <!-- ENCABEZADO -->
+
+      <div
+
+        id="modalHeading"
+
+        class="modal-heading"
+
+      >
+
+
+        <div class="modal-brand">
+
+          Clara Ortiz
+
+        </div>
+
+
+        <h2 class="modal-title">
+
+          ¿Cómo nos comunicamos contigo?
+
+        </h2>
+
+
+        <p class="modal-intro">
+
+          Dejanos tus datos y te contamos lo que se viene.
+
+        </p>
+
+
+      </div>
+
+
+
+      <!-- ==================================================
+           FORMULARIO
+      ================================================== -->
+
+      <form
+
+        id="subscribeForm"
+
+        action="https://formsubmit.co/fabiofuentes@gmail.com"
+
+        method="POST"
+
+        target="submitFrame"
+
+      >
+
+
+
+        <!-- ASUNTO MAIL -->
+
+        <input
+
+          type="hidden"
+
+          name="_subject"
+
+          value="Nueva suscripción — Clara Ortiz"
+
+        >
+
+
+
+        <!-- Sin captcha -->
+
+        <input
+
+          type="hidden"
+
+          name="_captcha"
+
+          value="false"
+
+        >
+
+
+
+        <!-- Presentación del mail -->
+
+        <input
+
+          type="hidden"
+
+          name="_template"
+
+          value="table"
+
+        >
+
+
+
+        <!-- NOMBRE -->
+
+        <div class="field">
+
+          <label for="nombre">
+
+            Nombre
+
+          </label>
+
+
+          <input
+
+            id="nombre"
+
+            name="Nombre"
+
+            type="text"
+
+            autocomplete="name"
+
+            required
+
+          >
+
+        </div>
+
+
+
+        <!-- WHATSAPP -->
+
+        <div class="field">
+
+          <label for="whatsapp">
+
+            WhatsApp
+
+          </label>
+
+
+          <input
+
+            id="whatsapp"
+
+            name="WhatsApp"
+
+            type="tel"
+
+            autocomplete="tel"
+
+          >
+
+        </div>
+
+
+
+        <!-- MAIL -->
+
+        <div class="field">
+
+          <label for="mail">
+
+            Mail
+
+          </label>
+
+
+          <input
+
+            id="mail"
+
+            name="Mail"
+
+            type="email"
+
+            autocomplete="email"
+
+          >
+
+        </div>
+
+
+
+        <p class="contact-hint">
+
+          Dejanos al menos un WhatsApp o un mail.
+
+        </p>
+
+
+
+        <button
+
+          class="modal-button"
+
+          type="submit"
+
+        >
+
+          Enviar
+
+        </button>
+
+
+      </form>
+
+
+
+      <!-- ==================================================
+           GRACIAS
+      ================================================== -->
+
+      <div
+
+        id="successMessage"
+
+        class="success"
+
+        aria-live="polite"
+
+      >
+
+
+        <h3 class="success-title">
+
+          Gracias.
+
+        </h3>
+
+
+        <p class="success-text">
+
+          Ya tenemos tus datos. Muy pronto vas a saber de nosotros.
+
+        </p>
+
+
+        <button
+
+          id="closeSuccess"
+
+          class="modal-button"
+
+          type="button"
+
+        >
+
+          Cerrar
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </dialog>
+
+
+
+
+  <!--
+       FormSubmit carga la respuesta acá.
+       El visitante NO abandona Clara Ortiz.
+  -->
+
+  <iframe
+
+    name="submitFrame"
+
+    title="Envío de formulario"
+
+  ></iframe>
+
+
+
+
+  <!-- ==================================================
+       JAVASCRIPT
+  ================================================== -->
+
+  <script>
+
+
+    const dialog =
+      document.getElementById("subscribeDialog");
+
+
+    const openSubscribe =
+      document.getElementById("openSubscribe");
+
+
+    const closeSubscribeX =
+      document.getElementById("closeSubscribeX");
+
+
+    const closeSuccess =
+      document.getElementById("closeSuccess");
+
+
+    const form =
+      document.getElementById("subscribeForm");
+
+
+    const modalHeading =
+      document.getElementById("modalHeading");
+
+
+    const successMessage =
+      document.getElementById("successMessage");
+
+
+    const nombre =
+      document.getElementById("nombre");
+
+
+    const whatsapp =
+      document.getElementById("whatsapp");
+
+
+    const mail =
+      document.getElementById("mail");
+
+
+
+    /* ==================================================
+       RESETEAR MODAL
+    ================================================== */
+
+    function resetModal() {
+
+
+      form.reset();
+
+
+      mail.setCustomValidity("");
+
+
+      modalHeading.classList.remove(
+        "is-hidden"
+      );
+
+
+      form.classList.remove(
+        "is-hidden"
+      );
+
+
+      successMessage.classList.remove(
+        "is-visible"
+      );
+
+
+    }
+
+
+
+    /* ==================================================
+       ABRIR
+    ================================================== */
+
+    function showSubscribeModal() {
+
+
+      resetModal();
+
+
+      if (!dialog.open) {
+
+        dialog.showModal();
+
+      }
+
+
+      setTimeout(() => {
+
+        nombre.focus();
+
+      }, 50);
+
+
+    }
+
+
+
+    /* ==================================================
+       CERRAR
+    ================================================== */
+
+    function closeSubscribeModal() {
+
+
+      if (dialog.open) {
+
+        dialog.close();
+
+      }
+
+
+    }
+
+
+
+    /* ==================================================
+       CLICK SUSCRIBIRME
+    ================================================== */
+
+    openSubscribe.addEventListener(
+
+      "click",
+
+      function(event) {
+
+
+        event.preventDefault();
+
+
+        showSubscribeModal();
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       BOTONES CERRAR
+    ================================================== */
+
+    closeSubscribeX.addEventListener(
+
+      "click",
+
+      closeSubscribeModal
+
+    );
+
+
+    closeSuccess.addEventListener(
+
+      "click",
+
+      closeSubscribeModal
+
+    );
+
+
+
+    /* ==================================================
+       CLICK FUERA DEL MODAL
+    ================================================== */
+
+    dialog.addEventListener(
+
+      "click",
+
+      function(event) {
+
+
+        const rect =
+          dialog.getBoundingClientRect();
+
+
+        const clickInside =
+
+          event.clientX >= rect.left &&
+
+          event.clientX <= rect.right &&
+
+          event.clientY >= rect.top &&
+
+          event.clientY <= rect.bottom;
+
+
+        if (!clickInside) {
+
+          closeSubscribeModal();
+
+        }
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       VALIDACIÓN
+
+       Debe existir:
+       WhatsApp
+       O Mail.
+    ================================================== */
+
+    function validateContact() {
+
+
+      const hasWhatsapp =
+
+        whatsapp.value.trim() !== "";
+
+
+      const hasMail =
+
+        mail.value.trim() !== "";
+
+
+
+      if (!hasWhatsapp && !hasMail) {
+
+
+        mail.setCustomValidity(
+
+          "Ingresá un WhatsApp o un mail."
+
+        );
+
+
+        mail.reportValidity();
+
+
+        return false;
+
+
+      }
+
+
+      mail.setCustomValidity("");
+
+
+      return true;
+
+
+    }
+
+
+
+    whatsapp.addEventListener(
+
+      "input",
+
+      function() {
+
+
+        if (
+
+          whatsapp.value.trim() !== ""
+
+        ) {
+
+
+          mail.setCustomValidity("");
+
+
+        }
+
+
+      }
+
+    );
+
+
+
+    mail.addEventListener(
+
+      "input",
+
+      function() {
+
+
+        mail.setCustomValidity("");
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       ENVIAR
+    ================================================== */
+
+    form.addEventListener(
+
+      "submit",
+
+      function(event) {
+
+
+        event.preventDefault();
+
+
+
+        /* Validación HTML */
+
+        if (!form.checkValidity()) {
+
+
+          form.reportValidity();
+
+
+          return;
+
+
+        }
+
+
+
+        /* WhatsApp o Mail */
+
+        if (!validateContact()) {
+
+
+          return;
+
+
+        }
+
+
+
+        /*
+          Envía realmente los datos
+          a FormSubmit.
+
+          Como target es submitFrame,
+          la web permanece donde está.
+        */
+
+        form.submit();
+
+
+
+        /*
+          Mostrar agradecimiento
+          inmediatamente.
+        */
+
+        modalHeading.classList.add(
+          "is-hidden"
+        );
+
+
+        form.classList.add(
+          "is-hidden"
+        );
+
+
+        successMessage.classList.add(
+          "is-visible"
+        );
+
+
+      }
+
+    );
+
+
+
+    /* ==================================================
+       ABRIR DESDE OTRA PÁGINA
+
+       Esto hace funcionar:
+
+       index.html#suscribirme
+
+       por ejemplo desde contacto.html
+    ================================================== */
+
+    if (
+
+      window.location.hash ===
+      "#suscribirme"
+
+    ) {
+
+
+      window.addEventListener(
+
+        "load",
+
+        function() {
+
+
+          showSubscribeModal();
+
+
+
+          /*
+            Quitamos #suscribirme después
+            para que la URL quede limpia.
+          */
+
+          history.replaceState(
+
+            null,
+
+            "",
+
+            window.location.pathname +
+            window.location.search
+
+          );
+
+
+        }
+
+      );
+
+
+    }
+
+
+  </script>
+
+
 </body>
+
 </html>
