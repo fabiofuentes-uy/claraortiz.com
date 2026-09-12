@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <title>clara ortiz</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #c8bbb2;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .page {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      width: 100dvw;
+      height: 100dvh;
+      overflow: hidden;
+      background: #c8bbb2;
+    }
+
+    .page-svg {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hit {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    a {
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-underline {
+      stroke: #6e5139;
+      stroke-width: 1.3;
+      vector-effect: non-scaling-stroke;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .menu-link:hover .menu-underline {
+      opacity: 0.55;
+    }
+
+    .menu-link.active .menu-underline {
+      opacity: 1;
+    }
+
+    .desktop-svg {
+      display: block;
+    }
+
+    .mobile-svg {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+
+      html,
+      body,
+      .page {
+        background: #c8bbb2;
+      }
+
+      .desktop-svg {
+        display: none;
+      }
+
+      .mobile-svg {
+        display: block;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(200, 187, 178, 0.985);
+      }
+
+      .mobile-menu.open {
+        display: flex;
+      }
+
+      .mobile-menu-inner {
+        width: min(76vw, 360px);
+        text-align: center;
+      }
+
+      .mobile-menu-close {
+        position: absolute;
+        top: 24px;
+        right: 27px;
+        border: 0;
+        background: transparent;
+        color: #6e5139;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 38px;
+        font-weight: 300;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .mobile-menu a {
+        display: block;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(110, 81, 57, 0.22);
+        color: #4f3c2e;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.22em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .mobile-menu a:first-of-type {
+        border-top: 1px solid rgba(110, 81, 57, 0.22);
+      }
+
+      .mobile-menu a.active {
+        font-weight: 600;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <svg
+      class="page-svg mobile-svg"
+      viewBox="0 0 941 1672"
+      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      aria-label="Concepto — Clara Ortiz — versión móvil"
+    >
+
+      <image
+        href="./concepto-mobile.jpg"
+        xlink:href="./concepto-mobile.jpg"
+        x="-2"
+        y="0"
+        width="945"
+        height="1672"
+        preserveAspectRatio="none"
+      />
+
+      <a
+        href="./index.html"
+        xlink:href="./index.html"
+        aria-label="Volver al inicio"
+      >
+        <rect
+          class="hit"
+          x="180"
+          y="20"
+          width="560"
+          height="125"
+          rx="4"
+        />
+      </a>
+
+      <a
+        id="mobileMenuButton"
+        href="#menu"
+        xlink:href="#menu"
+        aria-label="Abrir menú"
+      >
+        <rect
+          class="hit"
+          x="785"
+          y="20"
+          width="135"
+          height="125"
+          rx="4"
+        />
+      </a>
+
+    </svg>
+
+    <svg
+      class="page-svg desktop-svg"
+      viewBox="0 0 1670 941"
+      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      aria-label="Concepto — Clara Ortiz"
+    >
+
+      <image
+        href="./concepto.jpg"
+        xlink:href="./concepto.jpg"
+        x="-2"
+        y="0"
+        width="1674"
+        height="941"
+        preserveAspectRatio="none"
+      />
+
+      <a
+        href="./index.html"
+        xlink:href="./index.html"
+        aria-label="Volver al inicio"
+      >
+        <rect
+          class="hit"
+          x="170"
+          y="25"
+          width="520"
+          height="125"
+          rx="4"
+        />
+      </a>
+
+      <a
+        class="menu-link active"
+        href="./concepto.html"
+        xlink:href="./concepto.html"
+        aria-label="Concepto"
+      >
+        <rect
+          class="hit"
+          x="1170"
+          y="30"
+          width="132"
+          height="58"
+          rx="4"
+        />
+
+        <line
+          class="menu-underline"
+          x1="1185"
+          y1="89"
+          x2="1288"
+          y2="89"
+        />
+      </a>
+
+      <a
+        class="menu-link"
+        href="./estetica.html"
+        xlink:href="./estetica.html"
+        aria-label="Estética"
+      >
+        <rect
+          class="hit"
+          x="1325"
+          y="30"
+          width="120"
+          height="58"
+          rx="4"
+        />
+
+        <line
+          class="menu-underline"
+          x1="1340"
+          y1="89"
+          x2="1430"
+          y2="89"
+        />
+      </a>
+
+      <a
+        class="menu-link"
+        href="./contacto.html"
+        xlink:href="./contacto.html"
+        aria-label="Contacto"
+      >
+        <rect
+          class="hit"
+          x="1467"
+          y="30"
+          width="135"
+          height="58"
+          rx="4"
+        />
+
+        <line
+          class="menu-underline"
+          x1="1482"
+          y1="89"
+          x2="1588"
+          y2="89"
+        />
+      </a>
+
+    </svg>
+
+    <nav
+      id="mobileMenu"
+      class="mobile-menu"
+      aria-label="Menú móvil"
+    >
+
+      <button
+        id="mobileMenuClose"
+        class="mobile-menu-close"
+        type="button"
+        aria-label="Cerrar menú"
+      >
+        ×
+      </button>
+
+      <div class="mobile-menu-inner">
+
+        <a
+          href="./concepto.html"
+          class="active"
+        >
+          Concepto
+        </a>
+
+        <a href="./estetica.html">
+          Estética
+        </a>
+
+        <a href="./contacto.html">
+          Contacto
+        </a>
+
+      </div>
+
+    </nav>
+
+  </main>
+
+  <script>
+
+    const mobileMenuButton =
+      document.getElementById("mobileMenuButton");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    const mobileMenuClose =
+      document.getElementById("mobileMenuClose");
+
+    function openMobileMenu() {
+      mobileMenu.classList.add("open");
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove("open");
+    }
+
+    mobileMenuButton.addEventListener(
+      "click",
+      function(event) {
+        event.preventDefault();
+        openMobileMenu();
+      }
+    );
+
+    mobileMenuClose.addEventListener(
+      "click",
+      closeMobileMenu
+    );
+
+    mobileMenu.addEventListener(
+      "click",
+      function(event) {
+        if (event.target === mobileMenu) {
+          closeMobileMenu();
+        }
+      }
+    );
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(function(link) {
+        link.addEventListener(
+          "click",
+          closeMobileMenu
+        );
+      });
+
+  </script>
+
+</body>
+</html>
